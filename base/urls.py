@@ -13,9 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from base import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name="main"),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    # DDT 를 위한 설정
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]
+
+    # 미디어 파일
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
