@@ -66,6 +66,16 @@
 
 
 
+let today = new Date();
+
+let year = today.getFullYear();
+let month = today.getMonth(); + 1;
+let date = today.getDate();
+
+document.write(year + '년' + month + '월' + date + '일')
+
+
+
 
 </script>
 
@@ -84,13 +94,7 @@
             width: 70px;
 
         }
-        input {
-            height: 50px;
-            width: 70px;
-            border: none;
 
-            font-size: 30px;
-        }
         .year_mon{
             font-size: 25px;
         }
@@ -103,9 +107,8 @@
 
 
 
+
 </style>
-
-
 
 
 <div class="container t-mt-14 t-flex">
@@ -133,7 +136,11 @@
         <tbody class="">
         </tbody>
     </table>
-    <div class="t-flex t-w-[20%] t-bg-red-500 t-h-[50px]">dd</div>
+    <div class="t-flex t-w-[20%] t-bg-red-500 t-h-[50px]">
+        <form>
+            <span id="date"></span>
+        </form>
+    </div>
 </div>
 <div class="container t-flex">
     <div class="t-w-[300px]">
