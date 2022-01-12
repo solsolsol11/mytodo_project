@@ -7,5 +7,8 @@ from django.shortcuts import render
 
 
 
-def index(request:HttpRequest):
-    return HttpResponse("안녕")
+def index(request):
+    return render(request, "home/main.html")
+
+def index2(request):
+    return render(request, "home/main2.html")

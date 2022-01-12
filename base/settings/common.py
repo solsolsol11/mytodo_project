@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ixqdcb0%+=o=lj0v&b7hama3-h6ot^f((bf3*yc)3ufaa)9mtx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     # 서드파티
     'debug_toolbar',
     # Local App
     'accounts.apps.AccountsConfig',
+    'board.apps.BoardConfig'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,9 @@ ROOT_URLCONF = 'base.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'base/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +85,7 @@ WSGI_APPLICATION = 'base.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test_base',
+        'NAME': 'mytodoProject',
         'USER': 'sbsst',
         'PASSWORD': 'sbs123414',
         'HOST': '127.0.0.1',
@@ -138,4 +142,13 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-AUTH_USER_MODEL = 'accounts.User'
+STATICFILES_DIRS = [
+    BASE_DIR / 'base/static',
+]
+
+STATIC_ROOT = BASE_DIR / 'static'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# AUTH_USER_MODEL = 'accounts.User'

@@ -23,6 +23,7 @@ from base import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="main"),
+
 ]
 
 if settings.DEBUG:

@@ -259,3 +259,5 @@ fabric.properties
 
 # 추가
 .idea
+
+node_modules/
