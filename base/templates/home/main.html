@@ -3,11 +3,6 @@
 {% load humanize %}
 
 
-
-
-
-
-
 {% block content %}
 <script>
         $(function(){
@@ -68,7 +63,11 @@
 
 
         })
-    </script>
+
+
+
+
+</script>
 
 <style>
         table {
@@ -83,13 +82,13 @@
             text-align: center;
             height: 50px;
             width: 70px;
-            background-color: #FFFDC5;
+
         }
         input {
             height: 50px;
             width: 70px;
             border: none;
-            background-color:  orange;
+
             font-size: 30px;
         }
         .year_mon{
@@ -99,33 +98,57 @@
             background-color: #FFA07A;
         }
 
-    </style>
 
 
 
 
 
+</style>
 
 
-<table id="calendar">
-    <thead>
-    <tr>
-        <th class=""><input name="preMon" type="button" value="<"></th>
-        <th colspan="5" class="year_mon"></th>
-        <th><input name="nextMon" type="button" value=">"></th>
-    </tr>
-    <tr>
-        <th class="">일</th>
-        <th>월</th>
-        <th>화</th>
-        <th>수</th>
-        <th>목</th>
-        <th>금</th>
-        <th>토</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+
+
+<div class="container t-mt-14 t-flex">
+    <div name="left-bar" class="t-mt-14 t-w-[200px] t-h-[400px] t-bg-red-300">
+        <div class="t-w-[200px] t-h-[130px]">프로필</div>
+        <div class="t-w-[200px] t-h-[270px]">todolist</div>
+    </div>
+    <table id="calendar" class="">
+        <thead class="">
+        <tr class="">
+            <th class=""><input name="preMon" type="button" value="<"></th>
+            <th colspan="5" class="year_mon t-text-center"></th>
+            <th><input name="nextMon" type="button" value=">"></th>
+        </tr>
+        <tr>
+            <th class="t-text-center">일</th>
+            <th class="t-text-center">월</th>
+            <th class="t-text-center">화</th>
+            <th class="t-text-center">수</th>
+            <th class="t-text-center">목</th>
+            <th class="t-text-center">금</th>
+            <th class="t-text-center">토</th>
+        </tr>
+        </thead>
+        <tbody class="">
+        </tbody>
+    </table>
+    <div class="t-flex t-w-[20%] t-bg-red-500 t-h-[50px]">dd</div>
+</div>
+<div class="container t-flex">
+    <div class="t-w-[300px]">
+
+        <textarea name="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="t-w-[300px]">
+
+        <textarea name="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="t-w-[300px]">
+
+        <textarea name="" cols="30" rows="10"></textarea>
+    </div>
+</div>
+
 
 {% endblock %}

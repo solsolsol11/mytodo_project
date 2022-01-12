@@ -22,12 +22,35 @@
 </head>
 <body>
 
+<header>
+
+    <nav class="navbar navbar-expand-md navbar navbar-light fixed-top t-bg-gray-300">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'main' %}"> 내 할일은 내가 해</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0 t-m-0 t-ml-auto">
+                    <li class="nav-item t-mr-10"><a href="#">로그인</a></li>
+                    <li class="nav-item t-mr-10"><a href="#">게시판</a></li>
+                    <li class="nav-item t-mr-10"><a href="#">상점</a></li>
+                    <li class="nav-item t-mr-10"><a href="#">문의</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+</header>
+
 {% block content %}
 {% endblock %}
 
 
 <footer class="footer py-3 bg-light">
-    <div>달력</div>
+    <div class="t-text-center">내 할일은 내가 해</div>
 </footer>
 </body>
 </html>
