@@ -41,7 +41,7 @@
                     </li>
                     {% if user.is_authenticated %}
                      <li class="nav-item">
-                        <a class="nav-link t-whitespace-nowrap" href="#"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
+                        <a class="nav-link t-whitespace-nowrap" href="{% url 'accounts:signout' %}"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link t-whitespace-nowrap">
@@ -52,13 +52,13 @@
 
                     {% else %}
                      <li class="nav-item t-whitespace-nowrap">
-                        <a class="nav-link" href=""><i class="fas fa-sign-in-alt"></i>로그인</a>
+                        <a class="nav-link" href="{% url 'accounts:signin' %}"><i class="fas fa-sign-in-alt"></i>로그인</a>
                     </li>
                     <li class="nav-item t-whitespace-nowrap">
-                        <a class="nav-link" href=""><i class="fas fa-user-plus"></i>회원가입</a>
+                        <a class="nav-link" href="#"><i class="fas fa-user-plus"></i>회원가입</a>
                     </li>
                     <li class="nav-item t-whitespace-nowrap">
-                        <a class="nav-link" href=""><i class="fas fa-users"></i>아이디 찾기</a>
+                        <a class="nav-link" href="#"><i class="fas fa-users"></i>아이디 찾기</a>
                     </li>
                     {% endif %}
 

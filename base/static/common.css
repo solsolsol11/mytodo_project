@@ -150,6 +150,26 @@
   width: 400px
 }
 
+.t-w-full {
+  width: 100%
+}
+
+.t-max-w-screen-md {
+  max-width: 768px
+}
+
+.t-flex-1 {
+  flex: 1 1 0%
+}
+
+.t-items-center {
+  align-items: center
+}
+
+.t-justify-center {
+  justify-content: center
+}
+
 .t-whitespace-nowrap {
   white-space: nowrap
 }

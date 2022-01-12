@@ -21,6 +21,7 @@ from django.urls import path, include
 from base import views
 
 urlpatterns = [
+    path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
     path('', views.index, name="main"),
 
