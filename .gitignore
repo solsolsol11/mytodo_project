@@ -259,5 +259,6 @@ fabric.properties
 
 # 추가
 .idea
-
+.env
 node_modules/
+base/static/tailwind.output.css

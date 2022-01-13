@@ -9,20 +9,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Calendar</title>
 
+    <!-- 제이쿼리 -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 테일윈드 -->
+    <link rel="stylesheet" href="{% static 'tailwind.output.css' %}">
 
+
+    <!-- bootstrap5 -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+
+    <!-- 폰트어썸 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- common.css -->
     <link rel="stylesheet" href="{% static 'common.css' %}">
+    <!-- common.js -->
     <script defer src="{% static 'common.js' %}"></script>
 
 </head>
 <body>
 
-<<header>
+
+<header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light fixed-top t-bg-purple-300">
         <div class="container">
@@ -40,8 +51,9 @@
                         <a href="#" class="nav-link t-whitespace-nowrap"><i class="fas fa-shopping-cart"></i>상점</a>
                     </li>
                     {% if user.is_authenticated %}
-                     <li class="nav-item">
-                        <a class="nav-link t-whitespace-nowrap" href="{% url 'accounts:signout' %}"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
+                    <li class="nav-item">
+                        <a class="nav-link t-whitespace-nowrap" href="{% url 'accounts:signout' %}"><i
+                                class="fas fa-sign-out-alt"></i>로그아웃</a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link t-whitespace-nowrap">
@@ -51,11 +63,11 @@
                     </li>
 
                     {% else %}
-                     <li class="nav-item t-whitespace-nowrap">
+                    <li class="nav-item t-whitespace-nowrap">
                         <a class="nav-link" href="{% url 'accounts:signin' %}"><i class="fas fa-sign-in-alt"></i>로그인</a>
                     </li>
                     <li class="nav-item t-whitespace-nowrap">
-                        <a class="nav-link" href="#"><i class="fas fa-user-plus"></i>회원가입</a>
+                        <a class="nav-link" href="{% url 'accounts:signup' %}"><i class="fas fa-user-plus"></i>회원가입</a>
                     </li>
                     <li class="nav-item t-whitespace-nowrap">
                         <a class="nav-link" href="#"><i class="fas fa-users"></i>아이디 찾기</a>
@@ -63,8 +75,6 @@
                     {% endif %}
 
                 </ul>
-
-
 
 
             </div>

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ixqdcb0%+=o=lj0v&b7hama3-h6ot^f((bf3*yc)3ufaa)9mtx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # 서드파티
     'debug_toolbar',
+    'django_bootstrap5',
     # Local App
     'accounts.apps.AccountsConfig',
     'board.apps.BoardConfig'
@@ -152,3 +153,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+LOGIN_URL = '/accounts/signin'
+
+LOGIN_REDIRECT_URL = '/'
