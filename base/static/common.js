@@ -1,8 +1,7 @@
 
-
         $(function(){
             var today = new Date();
-            var date = new Date();
+            var date = new Date();           
 
             $("input[name=preMon]").click(function() { // 이전달
                 $("#calendar > tbody > td").remove();
@@ -10,7 +9,7 @@
                 today = new Date ( today.getFullYear(), today.getMonth()-1, today.getDate());
                 buildCalendar();
             })
-
+            
             $("input[name=nextMon]").click(function(){ //다음달
                 $("#calendar > tbody > td").remove();
                 $("#calendar > tbody > tr").remove();
@@ -20,7 +19,7 @@
 
 
             function buildCalendar() {
-
+                
                 nowYear = today.getFullYear();
                 nowMonth = today.getMonth();
                 firstDate = new Date(nowYear,nowMonth,1).getDate();
@@ -52,21 +51,9 @@
                     if(nowYear==date.getFullYear() && nowMonth==date.getMonth() && $(".date").eq(index).text()==date.getDate()) {
                         $(".date").eq(index).addClass('colToday');
                     }
-                })
+                }) 
             }
             buildCalendar();
 
 
         })
-
-
-
-let today = new Date();
-
-let year = today.getFullYear();
-let month = today.getMonth(); + 1;
-let date = today.getDate();
-
-document.write(year + '년' + month + '월' + date + '일')
-
-
