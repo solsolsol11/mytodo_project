@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     # 서드파티
     'debug_toolbar',
     'django_bootstrap5',
+    'django_pydenticon',
     # Local App
     'accounts.apps.AccountsConfig',
-    'board.apps.BoardConfig'
+    'board.apps.BoardConfig',
+    'shop.apps.ShopConfig',
 ]
 
 MIDDLEWARE = [

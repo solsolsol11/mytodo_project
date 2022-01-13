@@ -7,21 +7,23 @@ class FindUsernameForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
-        self.fields['first_name'].required = True
+        self.fields['username'].required = True
     class Meta:
         model = User
-        fields = ['first_name', 'email']
+        fields = ['username', 'email']
 
 
 class SignupForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
-        self.fields['first_name'].required = True
+        self.fields['name'].required = True
+        self.fields['username'].label = '아이디'
+        self.fields['profile_img'].widget.attrs['accept'] = 'image/png, image/gif, image/jpeg'
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username', 'email', 'first_name']
+        fields = ['username', 'password1', 'password2', 'email', 'name', 'gender', 'profile_img']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

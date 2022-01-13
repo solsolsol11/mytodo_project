@@ -17,6 +17,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django_pydenticon.views import image as pydenticon_image
 
 from base import views
 
@@ -26,6 +27,7 @@ urlpatterns = [
     path('board/', include('board.urls')),
     path('shop/', include('shop.urls')),
     path('', views.index, name="main"),
+    path('identicon/image/<path:data>/', pydenticon_image, name='pydenticon_image'),
 
 ]
 

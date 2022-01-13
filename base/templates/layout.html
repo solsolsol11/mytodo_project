@@ -30,8 +30,15 @@
     <script defer src="{% static 'common.js' %}"></script>
 
 </head>
-<body>
+<body class="t-min-h-screen t-flex t-flex-col t-pt-[56px]">
 
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}  t-my-[0px]">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
 
 <header>
     <!-- Fixed navbar -->
@@ -58,7 +65,14 @@
                     <li class="nav-item">
                         <a href="" class="nav-link t-whitespace-nowrap">
                             <i class="fas fa-user"></i>
-                            {{ user.first_name }}`s Mypage
+                            {{ user.first_name }}
+                            {% if user.profile_img %}
+                            <img src="{{ user.profile_img.url }}"
+                                 style="width:24px; height:24px; object-fit:cover; border-radius:50%; display:inline-block;"/>
+                            {% else %}
+                            <img src="{% url 'pydenticon_image' user.username %}"
+                                 style="width:24px; display:inline-block;border-radius:50%; "/>
+                            {% endif %}
                         </a>
                     </li>
 
@@ -70,7 +84,7 @@
                         <a class="nav-link" href="{% url 'accounts:signup' %}"><i class="fas fa-user-plus"></i>회원가입</a>
                     </li>
                     <li class="nav-item t-whitespace-nowrap">
-                        <a class="nav-link" href="#"><i class="fas fa-users"></i>아이디 찾기</a>
+                        <a class="nav-link" href="{% url 'accounts:find_username' %}"><i class="fas fa-users"></i>아이디 찾기</a>
                     </li>
                     {% endif %}
 

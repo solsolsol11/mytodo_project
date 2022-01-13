@@ -1,16 +1,27 @@
 {% extends "layout.html" %}
 
 
-
-
 {% block content %}
 
 
+<div class="container t-flex">
+    <div name="left-bar" class="t-w-[200px] t-h-[400px] t-bg-red-300">
+        <div class="">
+            {% if user.is_authenticated %}
 
-<div class="container t-mt-14 t-flex">
-    <div name="left-bar" class="t-mt-14 t-w-[200px] t-h-[400px] t-bg-red-300">
-        <div class="t-w-[200px] t-h-[130px]">프로필</div>
-        <div class="t-w-[200px] t-h-[270px]">todolist</div>
+            {% if user.profile_img %}
+            <img src="{{ user.profile_img.url }}"
+                 style="width:24px; height:24px; object-fit:cover; border-radius:50%; display:inline-block;"/>
+            {% else %}
+            <img src="{% url 'pydenticon_image' user.username %}"
+                 style="width:24px; display:inline-block;border-radius:50%; "/>
+            {% endif %}
+
+            {% else %}
+            <div>로그인하세요</div>
+            {% endif %}
+        </div>
+        <div class="">todolist</div>
     </div>
     <table id="calendar" class="">
         <thead class="">
@@ -38,8 +49,6 @@
         </form>
     </div>
 </div>
-
-
 
 
 {% endblock %}
