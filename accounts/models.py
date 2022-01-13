@@ -10,8 +10,6 @@ class User(AbstractUser):
         MALE = "M", "남성"
         FEMALE = "F", "여성"
 
-
-
     reg_date = models.DateTimeField('등록날짜', auto_now_add=True)
     update_date = models.DateTimeField('갱신날짜', auto_now=True)
 
@@ -19,11 +17,10 @@ class User(AbstractUser):
     gender = models.CharField('성별', max_length=1, blank=True, choices=GenderChoices.choices)
     profile_img = models.ImageField('프로필이미지', blank=True, upload_to="accounts/profile_img/%Y/%m/%d",
                                     help_text="gif/png/jpg 이미지를 업로드해주세요.")
+
     class ProviderTypeCodeChoices(models.TextChoices):
         LOCAL = "local", "로컬"
         KAKAO = "kakao", "카카오"
-
-
 
     gender = models.CharField('성별', max_length=1, blank=True, choices=GenderChoices.choices)
     avatar = models.ImageField('아바타', blank=True, upload_to="accounts/avatar/%Y/%m/%d",
@@ -39,9 +36,6 @@ class User(AbstractUser):
         provider_type_code = User.ProviderTypeCodeChoices.KAKAO
         qs: QuerySet = User.objects.filter(provider_type_code=provider_type_code,
                                            provider_accounts_id=provider_accounts_id)
-
-
-
 
         if not qs.exists():
             username = provider_type_code + "__" + str(provider_accounts_id)

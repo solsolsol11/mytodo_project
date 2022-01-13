@@ -8,7 +8,7 @@
     <div name="left-bar" class="t-w-[200px] t-h-[400px] t-bg-red-300">
         <div class="">
             {% if user.is_authenticated %}
-
+            {{ user.name }}
             {% if user.profile_img %}
             <img src="{{ user.profile_img.url }}"
                  style="width:24px; height:24px; object-fit:cover; border-radius:50%; display:inline-block;"/>
