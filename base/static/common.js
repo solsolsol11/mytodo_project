@@ -107,17 +107,3 @@ function clickButton(){
 // todolist 끝
 
 
-var td = document.querySelectorAll('td'); //모든 태그에 대해 알림창 설정
-
-for(var i=0; i<td.length; i++){
-    if(i>=(today_days+null_days-1)){ //여기에서만 실행되도록 정하기 today_days+null_days-1는 현재 날짜 전까지의 인덱스를 표현한 것
-        //get_data(i); //해당 인덱스에만 알람 표시하기
-        //console.log(get_data(i));
-        td[i].ondblclick = function() {
-            //test_data = $("#data").text();
-           // console.log(get_data(i));
-            alert('hum');
-        };
-    }
-}
-
