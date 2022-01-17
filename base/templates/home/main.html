@@ -4,11 +4,11 @@
 {% block content %}
 
 
-<div class="container t-w-[1200px] t-h-[800px]">
+<div class="container t-w-[1200px] t-h-[800px] t-bg-[#ddd]">
 
-    <div name="left-container" class="t-w-[600px] t-float-left">
-        <div class="left-left-con t-float-left">
-        <div id="profile" class="t-mt-7 t-w-[100%] w-h-[300px] t-bg-red-300 t-whitespace-nowrap">
+    <div name="left-top-container" class="t-w-[600px] t-float-left">
+        <div class="t-float-left" id="left-top-left-con">
+        <div id="profile" class="t-mt-7 t-w-[100%] t-h-[200px] t-bg-red-300 t-whitespace-nowrap">
             {% if user.is_authenticated %}
             <h5>환영합니다!!!!<br></h5>
 
@@ -27,9 +27,12 @@
             {% endif %}
 
         </div>
-        <div id="todolist_detail" class="t-bg-red-400 t-w-[200px] t-h-[200px]">가나다</div>
+        <div id="todolist_detail" class="t-bg-red-400 t-w-[200px] t-h-[200px] t-flex-col t-content-around">
+            <div class="">계획 없는 목표는 한낱 꿈에 불과하다</div>
+            <a href="#"><h2>상세보기</h2></a>
         </div>
-        <div class="t-float-right t-bg-green-300">
+        </div>
+        <div id="left-top-right-con" class="t-float-right t-bg-green-300">
             <br>
             <h3 class="t-flex t-whitespace-nowrap">TO DO LIST</h3><br>
             <div class="t-flex t-whitespace-nowrap">
@@ -44,7 +47,7 @@
     </div>
 
 
-    <div id="right-container" class="t-w-[600px] t-h-[50%] t-float-right t-bg-blue-300">
+    <div id="right-container" class="t-w-[600px] t-h-[50%] t-float-right">
         <table id="calendar" class="">
             <thead class="">
             <tr class="">
@@ -73,9 +76,9 @@
             <span id="date"></span>
         </form>
     </div>
-    <div class="t-w-[100%] t-h-[30%] t-bg-blue-400" id="bottom">
-        <div class="t-w-[50%] t-h-[100%]" id="bottom-left">가나다</div>
-        <div id="bottom-right" class="t-w-[50%] t-h-[100%] t-bg-yellow-400">가나다</div>
+    <div class="t-w-[1200px] t-h-[30%] t-bg-blue-400 t-flex" id="bottom">
+        <div class="t-w-[50%] t-h-[100%] t-bg-green-400" id="bottom-left"><span>가나다</span></div>
+        <div id="bottom-right" class="t-w-[50%] t-h-[100%] t-bg-yellow-400"><span>가나다</span></div>
     </div>
 
 </div>
