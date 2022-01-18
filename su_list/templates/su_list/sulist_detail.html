@@ -11,20 +11,27 @@
 <!-- 일정 추가 팝업 -->
 
 <div class="myModal modal1">
+
     <div class="modal-content">
         <span class="close"></span>
         <p>중요하지만 급하지 않아</p>
-        <input id="text_add1" type="text" value=" " style="border: 1px solid black ;" class="text_add1">
+        <form method="POST" action="{% url 'su_list:list' %}">
+            {% csrf_token %}
+            <input id="text_add1" type="text" value=" " style="border: 1px solid black ;" class="text_add1"
+                   name="serious_no_urgent">
+
+        </form>
+            <div class=""><br><br><input type="button" id="add1" value="Add" class="btn btn-primary add1">
+                <input type="button"
+                       name="cancel"
+                       value="Cancel"
+                       class="btn btn-primary cancel">
+            </div>
 
 
-        <div class=""><br><br><input type="button" id="add1" value="Add" class="btn btn-primary add1">
-            <input type="button"
-                   name="cancel"
-                   value="Cancel"
-                   class="btn btn-primary cancel">
 
-        </div>
     </div>
+
 </div>
 <div class="myModal modal2">
     <div class="modal-content">
@@ -62,7 +69,7 @@
         <p>중요하진 않은데 급해</p>
         <input id="text_add4" type="text" value=" " style="border: 1px solid black ;" class="text_add4">
 
-                <div class=""><br><br><input type="button" id="add4" value="Add" class="btn btn-primary add4">
+        <div class=""><br><br><input type="button" id="add4" value="Add" class="btn btn-primary add4">
             <input type="button"
                    name="cancel"
                    value="Cancel"
