@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'board.apps.BoardConfig',
     'shop.apps.ShopConfig',
+    'su_list.apps.SuListConfig',
 ]
 
 MIDDLEWARE = [
@@ -85,9 +86,9 @@ WSGI_APPLICATION = 'base.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mytodoProject',
-        'USER': 'sbsst',
-        'PASSWORD': 'sbs123414',
+        'NAME': 'mytodoProject2',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {

@@ -27,7 +27,7 @@ urlpatterns = [
     path('board/', include('board.urls')),
     path('shop/', include('shop.urls')),
     path('', views.index, name="main"),
-    path('main2/', views.index2, name="main2"),
+    path('su_list/', include('su_list.urls')),
     path('main3/', views.index3, name="main3"),
     path('identicon/image/<path:data>/', pydenticon_image, name='pydenticon_image'),
 
