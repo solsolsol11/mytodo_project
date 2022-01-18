@@ -14,12 +14,15 @@
     <div class="modal-content">
         <span class="close"></span>
         <p>중요하지만 급하지 않아</p>
-        <input name="" type="text" value=" ">
-        <br><br>
-        <div class="cancel"><input type="button" name="add" value="Add" class="btn btn-primary"> <input type="button"
-                                                                                                  name="cancel"
-                                                                                                  value="Cancel"
-                                                                                                  class="btn btn-primary">
+        <input id="text_add1" type="text" value=" " style="border: 1px solid black ;" class="text_add1">
+
+
+        <div class=""><br><br><input type="button" id="add1" value="Add" class="btn btn-primary add1">
+            <input type="button"
+                   name="cancel"
+                   value="Cancel"
+                   class="btn btn-primary cancel">
+
         </div>
     </div>
 </div>
@@ -27,12 +30,14 @@
     <div class="modal-content">
         <span class="close"></span>
         <p>중요하고 급해</p>
-        <input name="" type="text" value=" ">
-        <br><br>
-        <div class="cancel"><input type="button" name="add" value="Add" class="btn btn-primary"> <input type="button"
-                                                                                                  name="cancel"
-                                                                                                  value="Cancel"
-                                                                                                  class="btn btn-primary">
+        <input id="text_add2" type="text" value=" " style="border: 1px solid black ;" class="text_add2">
+
+        <div class=""><br><br><input type="button" id="add2" value="Add" class="btn btn-primary add2">
+            <input type="button"
+                   name="cancel"
+                   value="Cancel"
+                   class="btn btn-primary cancel">
+
         </div>
     </div>
 </div>
@@ -40,12 +45,14 @@
     <div class="modal-content">
         <span class="close"></span>
         <p>중요하지도 않고 급하지도 않아</p>
-        <input name="" type="text" value=" ">
-        <br><br>
-        <div class="cancel"><input type="button" name="add" value="Add" class="btn btn-primary"> <input type="button"
-                                                                                                  name="cancel"
-                                                                                                  value="Cancel"
-                                                                                                  class="btn btn-primary">
+        <input id="text_add3" type="text" value=" " style="border: 1px solid black ;" class="text_add3">
+
+        <div class=""><br><br><input type="button" id="add3" value="Add" class="btn btn-primary add3">
+            <input type="button"
+                   name="cancel"
+                   value="Cancel"
+                   class="btn btn-primary cancel">
+
         </div>
     </div>
 </div>
@@ -53,40 +60,61 @@
     <div class="modal-content">
         <span class="close"></span>
         <p>중요하진 않은데 급해</p>
-        <input name="" type="text" value=" ">
-        <br><br>
-        <div class="cancel"><input type="button" name="add" value="Add" class="btn btn-primary"> <input type="button"
-                                                                                                  name="cancel"
-                                                                                                  value="Cancel"
-                                                                                                  class="btn btn-primary">
+        <input id="text_add4" type="text" value=" " style="border: 1px solid black ;" class="text_add4">
+
+                <div class=""><br><br><input type="button" id="add4" value="Add" class="btn btn-primary add4">
+            <input type="button"
+                   name="cancel"
+                   value="Cancel"
+                   class="btn btn-primary cancel">
+
         </div>
     </div>
 </div>
 
+<!-- 일정 추가 팝업 끝 -->
 
-<div class="container t-w-[1280px] t-h-[800px] t-bg-[#ddd]">
-    <div class="top-con t-w-[100%] t-h-[50%] t-align-left t-flex">
-        <div class=" t-w-[50%] t-h-[100%] t-bg-red-400 t-text-center">
-            <span>중요하지만 급하지 않아<br></span>
+<!-- 일정 추가 -->
+<div class="container t-w-[1280px] t-h-[800px] t-mt-2 t-pt-0 t-pr-0 t-pl-0" style="border : 1px solid black ;">
+    <div class="top-con t-w-[100%] t-h-[50%] t-align-left t-flex" style="border-bottom : 2px solid black ;">
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-green-200">
+            <div class="t-font-bold t-text-xl ">중요하지만 급하지 않아</div>
+            <br>
+            <ul class="t-text-center t-pr-6" id="ul_list1">
+                <li class="t-text-center">공부하기</li>
+            </ul>
             <button type="button" class="btn btn-success add-green">추가</button>
         </div>
-        <div class=" t-w-[50%] t-h-[100%] t-bg-blue-400 t-text-center">
-            중요하고 급해<br>
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-red-200" style="border-left : 2px solid black ;">
+            <div class="t-font-bold t-text-xl">중요하고 급해</div>
+            <br>
+            <ul class="t-pr-6" id="ul_list2">
+                <li class="t-text-center">Hello, World!</li>
+            </ul>
             <button type="button" class="btn btn-danger add-red">추가</button>
         </div>
     </div>
     <div class="bottom-con t-w-[100%] t-h-[50%] t-align-left t-flex">
-        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-green-400">
-            중요하지도 않고 급하지도 않아<br>
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-gray-200">
+            <div class="t-font-bold t-text-xl">중요하지도 않고 급하지도 않아</div>
+            <br>
+            <ul class="t-text-center t-pr-6" id="ul_list3">
+                <li class="t-text-center">Hello, World!</li>
+            </ul>
             <button type="button" class="btn btn-secondary add-gray">추가</button>
         </div>
-        <div class=" t-w-[50%] t-h-[100%] t-bg-indigo-300 t-text-center">
-            중요하진 않은데 급해<br>
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-yellow-200" style="border-left : 2px solid black ;">
+            <div class="t-font-bold t-text-xl">중요하진 않은데 급해</div>
+            <br>
+            <ul class="t-text-center t-pr-6" id="ul_list4">
+                <li class="t-text-center">배고픔을 이겨내기</li>
+            </ul>
             <button type="button" class="btn btn-warning add-gold">추가</button>
         </div>
     </div>
 
 </div>
 
+<!-- 일정 추가 끝 -->
 
 {% endblock %}

@@ -141,17 +141,64 @@ function a1__hide_gold(){
 }
 
 
+
+
+
 $('.cancel').click(a1__hide_green);
+
 $('.cancel').click(a1__hide_red);
+
 $('.cancel').click(a1__hide_gray);
+
 $('.cancel').click(a1__hide_gold);
 
 
+function action_add__green(){
+	var text_add1 = $("#text_add1").val(); //입력할 글씨
+	var ul_list1 = $("#ul_list1"); //ul_list선언
+	ul_list1.append("<li>"+text_add1+"</li>"); //ul_list안쪽에 li추가
+	$('.modal1').css('display', 'none');
+	console.log("성공4");
+}
+
+function action_add__red(){
+	var text_add2 = $("#text_add2").val(); //입력할 글씨
+	var ul_list2 = $("#ul_list2"); //ul_list선언
+	ul_list2.append("<li>"+text_add2+"</li>"); //ul_list안쪽에 li추가
+	$('.modal2').css('display', 'none');
+	console.log("성공4");
+}
+
+function action_add__gray(){
+	var text_add3 = $("#text_add3").val(); //입력할 글씨
+	var ul_list3 = $("#ul_list3"); //ul_list선언
+	ul_list3.append("<li>"+text_add3+"</li>"); //ul_list안쪽에 li추가
+	$('.modal3').css('display', 'none');
+	console.log("성공4");
+}
+
+function action_add__gold(){
+	var text_add4 = $("#text_add4").val(); //입력할 글씨
+	var ul_list4 = $("#ul_list4"); //ul_list선언
+	ul_list4.append("<li>"+text_add4+"</li>"); //ul_list안쪽에 li추가
+	$('.modal4').css('display', 'none');
+	console.log("성공4");
+}
 
 
-// todolist 시작
 
-// todolist 끝
+$('.add1').click(action_add__green);
+$('.add2').click(action_add__red);
+$('.add3').click(action_add__gray);
+$('.add4').click(action_add__gold);
+
+// 테스트시작
+function action_add(){
+	var text_add = $("#text_add").val(); //입력할 글씨
+	var ul_list = $("#ul_list"); //ul_list선언
+	ul_list.append("<li>"+text_add+"</li>"); //ul_list안쪽에 li추가
+}
+// 테스트 끝
 
 
 
