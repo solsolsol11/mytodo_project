@@ -89,21 +89,69 @@
 
 
 
+function a1__show_green(){
+
+    console.log("성공");
+    $('.modal1').css('display', 'block')
+}
+
+function a1__show_red(){
+
+    console.log("성공");
+    $('.modal2').css('display', 'block')
+}
+
+function a1__show_gray(){
+
+    console.log("성공");
+    $('.modal3').css('display', 'block')
+}
+
+function a1__show_gold(){
+
+    console.log("성공");
+    $('.modal4').css('display', 'block')
+}
+
+$('.add-green').click(a1__show_green);
+$('.add-red').click(a1__show_red);
+$('.add-gray').click(a1__show_gray);
+$('.add-gold').click(a1__show_gold);
+
+
+
+function a1__hide_green(){
+    $('.modal1').css('display', 'none');
+    console.log("성공2");
+}
+
+function a1__hide_red(){
+    $('.modal2').css('display', 'none');
+    console.log("성공2");
+}
+
+function a1__hide_gray(){
+    $('.modal3').css('display', 'none');
+    console.log("성공2");
+}
+
+function a1__hide_gold(){
+    $('.modal4').css('display', 'none');
+    console.log("성공2");
+}
+
+
+$('.cancel').click(a1__hide_green);
+$('.cancel').click(a1__hide_red);
+$('.cancel').click(a1__hide_gray);
+$('.cancel').click(a1__hide_gold);
+
 
 
 
 // todolist 시작
-var button = document.getElementById('button');
-var input = document.getElementById('input');
-var list = document.getElementById('list');
 
-button.addEventListener('click', clickButton);
-
-function clickButton(){
-  var temp = document.createElement('li');
-  temp.innerHTML = input.value;
-  list.appendChild(temp);
-}
 // todolist 끝
+
 
 

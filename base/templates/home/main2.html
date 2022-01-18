@@ -1,30 +1,89 @@
 {% extends "layout.html" %}
-
+{% load django_bootstrap5 %}
 
 {% block content %}
 
 
 <script>
 
-    function add(){
-        alert('성공');
-    }
-
-
 
 </script>
+<!-- 일정 추가 팝업 -->
+
+<div class="myModal modal1">
+    <div class="modal-content">
+        <span class="close"></span>
+        <p>중요하지만 급하지 않아</p>
+        <input name="" type="text" value=" ">
+        <br><br>
+        <div class="cancel"><input type="button" name="add" value="Add" class="btn btn-primary"> <input type="button"
+                                                                                                  name="cancel"
+                                                                                                  value="Cancel"
+                                                                                                  class="btn btn-primary">
+        </div>
+    </div>
+</div>
+<div class="myModal modal2">
+    <div class="modal-content">
+        <span class="close"></span>
+        <p>중요하고 급해</p>
+        <input name="" type="text" value=" ">
+        <br><br>
+        <div class="cancel"><input type="button" name="add" value="Add" class="btn btn-primary"> <input type="button"
+                                                                                                  name="cancel"
+                                                                                                  value="Cancel"
+                                                                                                  class="btn btn-primary">
+        </div>
+    </div>
+</div>
+<div class="myModal modal3">
+    <div class="modal-content">
+        <span class="close"></span>
+        <p>중요하지도 않고 급하지도 않아</p>
+        <input name="" type="text" value=" ">
+        <br><br>
+        <div class="cancel"><input type="button" name="add" value="Add" class="btn btn-primary"> <input type="button"
+                                                                                                  name="cancel"
+                                                                                                  value="Cancel"
+                                                                                                  class="btn btn-primary">
+        </div>
+    </div>
+</div>
+<div class="myModal modal4">
+    <div class="modal-content">
+        <span class="close"></span>
+        <p>중요하진 않은데 급해</p>
+        <input name="" type="text" value=" ">
+        <br><br>
+        <div class="cancel"><input type="button" name="add" value="Add" class="btn btn-primary"> <input type="button"
+                                                                                                  name="cancel"
+                                                                                                  value="Cancel"
+                                                                                                  class="btn btn-primary">
+        </div>
+    </div>
+</div>
 
 
 <div class="container t-w-[1280px] t-h-[800px] t-bg-[#ddd]">
     <div class="top-con t-w-[100%] t-h-[50%] t-align-left t-flex">
-        <div onclick="add()" class="add t-w-[50%] t-h-[100%] t-bg-red-400 t-text-center">중요하지만 급하지 않아</div>
-        <div onclick="add()" class="add t-w-[50%] t-h-[100%] t-bg-blue-400 t-text-center">중요하고 급해</div>
+        <div class=" t-w-[50%] t-h-[100%] t-bg-red-400 t-text-center">
+            <span>중요하지만 급하지 않아<br></span>
+            <button type="button" class="btn btn-success add-green">추가</button>
+        </div>
+        <div class=" t-w-[50%] t-h-[100%] t-bg-blue-400 t-text-center">
+            중요하고 급해<br>
+            <button type="button" class="btn btn-danger add-red">추가</button>
+        </div>
     </div>
     <div class="bottom-con t-w-[100%] t-h-[50%] t-align-left t-flex">
-        <div onclick="add()" class="add t-w-[50%] t-h-[100%] t-text-center t-bg-green-400">
-            중요하지도 않고 급하지도 않아
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-green-400">
+            중요하지도 않고 급하지도 않아<br>
+            <button type="button" class="btn btn-secondary add-gray">추가</button>
         </div>
-        <div onclick="add()" class="add t-w-[50%] t-h-[100%] t-bg-yellow-400 t-text-center">중요하진 않은데 급해</div>
+        <div class=" t-w-[50%] t-h-[100%] t-bg-indigo-300 t-text-center">
+            중요하진 않은데 급해<br>
+            <button type="button" class="btn btn-warning add-gold">추가</button>
+        </div>
     </div>
 
 </div>

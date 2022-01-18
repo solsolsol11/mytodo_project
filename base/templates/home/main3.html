@@ -1,23 +1,17 @@
 {% extends "layout.html" %}
-
+{% load humanize %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 
-<script>
-
-
-    function f_clickFunc(){
-        alert('성공');
- }
-</script>
 
 
 
-
-
-
-<div class="" onclick="f_clickFunc()">클릭하세요</div>
-
+    <div class="a1">가나다</div>
+    <div class="">
+        <button type="button" class="btn btn-primary a2_click">Primary</button>
+    </div>
+</div>
 
 
 {% endblock %}
