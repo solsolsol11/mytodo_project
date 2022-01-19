@@ -20,17 +20,15 @@
             <input id="text_add1" type="text" value=" " style="border: 1px solid black ;" class="text_add1"
                    name="serious_no_urgent">
 
+
+            <br><br><input type="submit" id="add1" value="Add" class="btn btn-primary add1">
+            <input type="button"
+                   name="cancel"
+                   value="Cancel"
+                   class="btn btn-primary cancel">
         </form>
-            <div class=""><br><br><input type="button" id="add1" value="Add" class="btn btn-primary add1">
-                <input type="button"
-                       name="cancel"
-                       value="Cancel"
-                       class="btn btn-primary cancel">
-            </div>
-
-
-
     </div>
+
 
 </div>
 <div class="myModal modal2">
@@ -89,6 +87,12 @@
             <br>
             <ul class="t-text-center t-pr-6" id="ul_list1">
                 <li class="t-text-center">공부하기</li>
+                {% for su in su_list %}
+                {% if su.serious_no_urgent %}
+                {{su.serious_no_urgent}}
+                {% endif %}
+                {% endfor %}
+
             </ul>
             <button type="button" class="btn btn-success add-green">추가</button>
         </div>
@@ -119,7 +123,7 @@
             <button type="button" class="btn btn-warning add-gold">추가</button>
         </div>
     </div>
-
+    <input type="submit">
 </div>
 
 <!-- 일정 추가 끝 -->

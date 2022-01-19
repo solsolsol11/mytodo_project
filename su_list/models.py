@@ -9,3 +9,7 @@ class Sulist(models.Model):
     serious_yes_urgent = models.TextField('중요and급함', null=True)
     no_serious_no_urgent = models.TextField('안중요and안급함', null=True)
     no_serious_yes_urgent = models.TextField('안중요and급함', null=True)
+
+
+    def __str__(self):
+        return self.user
