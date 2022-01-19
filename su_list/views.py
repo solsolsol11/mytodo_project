@@ -11,12 +11,29 @@ from su_list import models
 from su_list.forms import SulistForm
 from su_list.models import Sulist
 
-@login_required
-@require_POST
+
+
 
 @login_required
-def list(request:HttpRequest):
-    su_list = Sulist.objects.filter(user=request.user)
-    context = {'su_list': su_list}
-    print(context)
-    return render(request, "su_list/sulist_detail.html",context)
+def list(request: HttpRequest):
+    return render(request, "su_list/sulist_detail.html")
+
+
+@login_required
+def list_create(request:HttpRequest):
+    form = SulistForm()
+    print("실행")
+    if request.method == "POST":
+        form = SulistForm(request.POST)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.user = request.user
+            article.save()
+            messages.success(request, "성공")
+            return redirect('su_list:list')
+        print("실행2")
+    return render(request, 'su_list/sulist_detail.html', {
+        "form":form
+
+    })
+
