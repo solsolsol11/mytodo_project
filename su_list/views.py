@@ -8,14 +8,24 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 
 from su_list import models
-from su_list.forms import SeriousNoUrgentListForm
+from su_list.forms import SeriousNoUrgentListForm, SeriousYesUrgentListForm
 
-
-@login_required
 def list(request: HttpRequest):
+    return render(request, "su_list/sulist_detail.html")
+
+
+
+# 중요하지만 급하지 않아 list
+@login_required
+def green_list_(request: HttpRequest):
     green_list = models.SeriousNoUrgentList.objects.filter(user_id=request.user.id)
     return render(request, "su_list/sulist_detail.html", {"green_list": green_list})
 
+# 중요하고 급해 list
+@login_required
+def red_list_(request: HttpRequest):
+    red_list = models.SeriousNoUrgentList.objects.filter(user_id=request.user.id)
+    return render(request, "su_list/sulist_detail.html", {"red_list": red_list})
 
 
 
@@ -23,7 +33,7 @@ def list(request: HttpRequest):
 @login_required
 def green_list_create(request:HttpRequest):
     form = SeriousNoUrgentListForm()
-    print(form)
+
     if request.method == "POST":
         form = SeriousNoUrgentListForm(request.POST)
         if form.is_valid():
@@ -32,13 +42,29 @@ def green_list_create(request:HttpRequest):
             article.save()
             messages.success(request, "성공")
             return redirect('su_list:list')
-        print(form)
+
     return render(request, 'su_list/sulist_detail.html', {
         "form":form,
 
 
     })
-    print(form)
+
 
 # 중요하고 급해 views
+@login_required
+def red_list_create(request: HttpRequest):
+    form = SeriousYesUrgentListForm()
 
+    if request.method == "POST":
+        form = SeriousYesUrgentListForm(request.POST)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.user = request.user
+            article.save()
+            messages.success(request, "성공")
+            return redirect('su_list:list')
+
+    return render(request, 'su_list/sulist_detail.html', {
+        "form": form,
+
+    })
