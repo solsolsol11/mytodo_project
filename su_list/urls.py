@@ -7,6 +7,6 @@ app_name = 'su_list'
 urlpatterns = [
 
 path('', views.list, name="list"),
-path('create/', views.list_create, name="list__create")
+path('create/', views.green_list_create, name="green_list_create")
 
 ]

@@ -8,24 +8,24 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 
 from su_list import models
-from su_list.forms import SulistForm
-from su_list.models import Sulist
-
-
+from su_list.forms import SeriousNoUrgentListForm
 
 
 @login_required
 def list(request: HttpRequest):
-    sulist_list = models.Sulist.objects.filter(user_id=request.user.id)
-    return render(request, "su_list/sulist_detail.html", {"sulist_list": sulist_list})
+    green_list = models.SeriousNoUrgentList.objects.filter(user_id=request.user.id)
+    return render(request, "su_list/sulist_detail.html", {"green_list": green_list})
 
 
+
+
+# 중요하지만 급하지 않아 views
 @login_required
-def list_create(request:HttpRequest):
-    form = SulistForm()
+def green_list_create(request:HttpRequest):
+    form = SeriousNoUrgentListForm()
     print(form)
     if request.method == "POST":
-        form = SulistForm(request.POST)
+        form = SeriousNoUrgentListForm(request.POST)
         if form.is_valid():
             article = form.save(commit=False)
             article.user = request.user
@@ -39,4 +39,6 @@ def list_create(request:HttpRequest):
 
     })
     print(form)
+
+# 중요하고 급해 views
 

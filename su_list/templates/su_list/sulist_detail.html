@@ -15,7 +15,7 @@
     <div class="modal-content">
         <span class="close"></span>
         <p>중요하지만 급하지 않아</p>
-        <form method="POST" action="{% url 'su_list:list__create' %}">
+        <form method="POST" action="{% url 'su_list:green_list_create' %}">
             {% csrf_token %}
             <input id="text_add1" type="text" value=" " style="border: 1px solid black ;" class="text_add1"
                    name="serious_no_urgent">
@@ -87,7 +87,7 @@
             <br>
             <ul class="t-text-center t-pr-6" id="ul_list1">
                 <li class="t-text-center">공부하기</li>
-                {% for list in sulist_list %}
+                {% for list in green_list %}
                 <div>{{ list.serious_no_urgent}}</div>
                 {% endfor %}
 
