@@ -11,3 +11,5 @@ class Sulist(models.Model):
     no_serious_yes_urgent = models.TextField('안중요and급함', null=True)
 
 
+
+

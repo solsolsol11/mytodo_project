@@ -8,4 +8,4 @@ class SulistForm(ModelForm):
 
     class Meta:
         model = Sulist
-        fields = ['serious_no_urgent', 'serious_yes_urgent', 'no_serious_no_urgent', 'no_serious_yes_urgent']
+        fields = ['serious_no_urgent']

@@ -16,13 +16,14 @@ from su_list.models import Sulist
 
 @login_required
 def list(request: HttpRequest):
-    return render(request, "su_list/sulist_detail.html")
+    sulist_list = models.Sulist.objects.filter(user_id=request.user.id)
+    return render(request, "su_list/sulist_detail.html", {"sulist_list": sulist_list})
 
 
 @login_required
 def list_create(request:HttpRequest):
     form = SulistForm()
-    print("실행")
+    print(form)
     if request.method == "POST":
         form = SulistForm(request.POST)
         if form.is_valid():
@@ -31,9 +32,11 @@ def list_create(request:HttpRequest):
             article.save()
             messages.success(request, "성공")
             return redirect('su_list:list')
-        print("실행2")
+        print(form)
     return render(request, 'su_list/sulist_detail.html', {
-        "form":form
+        "form":form,
+
 
     })
+    print(form)
 
