@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+
+<script>
+    function CartItemModifyForm__updateQuantity(el, add) {
+        const $form = $(el).closest('form');
+        const $salePrice = $form.find('.cart-item-modify-form__sale-price');
+        const productSalePrice = parseInt($salePrice.attr('data-sale-price'));
+        const $inputNumber = $form.find('input[type="number"]');
+        const oldQuantity = parseInt($inputNumber.val());
+        let newQuantity = oldQuantity + add;
+        if ( newQuantity > 100 ) {
+            newQuantity = 100;
+        }
+        else if ( newQuantity < 1 ) {
+            newQuantity = 1
+        }
+        $inputNumber.val(newQuantity);
+        $salePrice.text((productSalePrice * newQuantity).price_format());
+    }
+
+    function CartItems__allCheckBoxCheckChanged(el) {
+        if ( el.checked ) {
+            $('.cart-items__checkbox-item:not(:checked)').prop('checked', true);
+        }
+        else {
+            $('.cart-items__checkbox-item:checked').prop('checked', false);
+        }
+    }
+
+    function CartItems__itemCheckeChanged(el) {
+        const allCheckBoxNewCheckStatus = $('.cart-items__checkbox-item:not(:checked)').length == 0
+        $('.cart-items__checkbox-all').prop('checked', allCheckBoxNewCheckStatus);
+    }
+
+
+</script>
+
+
+
+
+<ul id="ul_list">
+	<li>사과</li>
+	<li>바나나</li>
+	<li>오렌지</li>
+	<li>딸기</li>
+	<li>망고</li>
+</ul>
+
+
+{% endblock %}
