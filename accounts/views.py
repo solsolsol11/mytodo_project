@@ -26,7 +26,7 @@ class MyLoginView(SuccessMessageMixin, LoginView):
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
         self.success_message = LazyString(
-            lambda: f'{self.request.user.last_name}{self.request.user.first_name}님 환영합니다.')
+            lambda: f'{self.request.user.last_name}{self.request.user.name} 님 환영합니다.')
 
     def get_initial(self):
         initial = self.initial.copy()
@@ -68,15 +68,15 @@ def find_username(request: HttpRequest):
         form = FindUsernameForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            first_name = form.cleaned_data['first_name']
-
-            qs: QuerySet = User.objects.filter(email=email, first_name=first_name)
+            first_name = form.cleaned_data['name']
+            print(first_name)
+            qs: QuerySet = User.objects.filter(email=email, name=first_name)
 
             if not qs.exists():
                 messages.warning(request, "일치하는 회원이 존재하지 않습니다.")
             else:
                 user: User = qs.first()
-                messages.success(request, f'해당회원의 username은 {user.username} 입니다.')
+                messages.success(request, f'해당회원의 아이디는 {user.username} 입니다.')
                 return redirect(reverse("accounts:signin") + '?username=' + user.username)
     else:
         form = FindUsernameForm()

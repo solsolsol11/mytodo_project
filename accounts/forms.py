@@ -7,10 +7,10 @@ class FindUsernameForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
-        self.fields['username'].required = True
+        self.fields['name'].required = True
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['name', 'email']
 
 
 class SignupForm(UserCreationForm):
