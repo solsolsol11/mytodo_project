@@ -2,98 +2,37 @@
 
 
 {% block content %}
-<script>
-    var button = document.getElementById('button');
-var input = document.getElementById('input');
-var list = document.getElementById('list');
-
-button.addEventListener('click', clickButton);
-
-function clickButton(){
-  var temp = document.createElement('li');
-  temp.innerHTML = input.value;
-  list.appendChild(temp);
-}
-</script>
 
 
+<div class=" main-container t-mt-2 t-pt-0 t-pr-0 t-pl-0 t-w-full t-h-full  t-bg-[url(https://user-images.githubusercontent.com/92343879/150265727-f1d98d31-62f9-4313-bed9-4aa417ecdc58.jpg)]">
 
-<div class="container t-w-[1200px] t-h-[800px]">
+    <div>
+        <h2 class="t-text-red-400">스티븐 코비 [성공하는 사람들의 7가지 습관 ]</h2>
+        <span>
 
-    <div name="left-top-container" class="t-w-[600px] t-float-left">
-        <div class="t-float-left" id="left-top-left-con">
-        <div id="profile" class="t-mt-7 t-w-[100%] t-h-[200px] t-bg-red-300 t-whitespace-nowrap">
-            {% if user.is_authenticated %}
-            <h5>환영합니다!!!!<br></h5>
+1 . 사람은 급하고 중요한 일을 처리하는데 대부분의 시간을 보낸다<br>
+<br>
+2. 급하지도 않고 중요하지도 않은 일에는 최소한의 관심을 준다<br>
+	게임 ,쇼핑,TV보기 등등<br>
+<br>
+3. 급하지 않지만 중요한일은 예를들어, 본인의 성장을 위한 자기계발<br>
+	그 과정이 힘들고 어려워서 안하게 된다.<br>
+4. 3번의 일은 길게봤을 때 무조건 긍정적은 영향을 준다<br>
+	노력하는 과정은 경험으로 남는다 .<br>
 
-            {{ user.name }} 님
-            {% if user.profile_img %}
 
-            <img src="{{ user.profile_img.url }}"
-                 style="width:24px; height:24px; object-fit:cover; border-radius:50%; display:inline-block;"/>
-            {% else %}
-            <img src="{% url 'pydenticon_image' user.username %}"
-                 style="width:24px; display:inline-block;border-radius:50%; "/>
-            {% endif %}
 
-            {% else %}
-            <div><a href="{% url 'accounts:signin' %}?next={{ request.get_full_path }}">로그인</a>하세요</div>
-            {% endif %}
 
-        </div>
-        <div id="todolist_detail" class="t-bg-red-400 t-w-[200px] t-h-[200px] t-flex-col t-content-around">
-            <div class="">계획 없는 목표는 한낱 꿈에 불과하다</div>
-            <a href="#"><h2>상세보기</h2></a>
-        </div>
-        </div>
-        <div id="left-top-right-con" class="t-float-right t-bg-green-300">
-            <br>
-            <h3 class="t-flex t-whitespace-nowrap">TO DO LIST</h3><br>
-            <div class="t-flex t-whitespace-nowrap">
-                <input type="text" id="input" class="" style="width: 135px ;">
-                <button type="button" id="button" class="btn btn-light btn-sm">입력</button>
-            </div>
-            <ul id="list">
-                <li>Hello, World!</li>
-            </ul>
 
-        </div>
+1. 추진력<br>
+<br>
+2. 현재 자신에게(=가족에게) 무엇이 중요한 일이고 덜 중요한 일인가? 가치 판단<br>
+<br>
+3. 전체 일 스케줄링 시 긴급하지 않지만 중요한 일을 위한 시간을 무조건 할당할 것<br>
+        </span>
     </div>
-
-
-    <div id="right-container" class="t-w-[600px] t-h-[50%] t-float-right">
-        <table id="calendar" class="">
-            <thead class="">
-            <tr class="">
-                <th class=""><input name="preMon" type="button" value="<"></th>
-                <th colspan="5" class="year_mon t-text-center"></th>
-                <th><input name="nextMon" type="button" value=">"></th>
-            </tr>
-            <tr>
-                <th class="t-text-center t-text-red-400">일</th>
-                <th class="t-text-center">월</th>
-                <th class="t-text-center">화</th>
-                <th class="t-text-center">수</th>
-                <th class="t-text-center">목</th>
-                <th class="t-text-center">금</th>
-                <th class="t-text-center t-text-blue-400">토</th>
-            </tr>
-
-            </thead>
-            <tbody class="">
-
-            </tbody>
-        </table>
-    </div>
-    <div class="t-flex t-w-[20%] t-h-[50px]">
-        <form>
-            <span id="date"></span>
-        </form>
-    </div>
-    <div class="t-w-[1200px] t-h-[30%] t-bg-blue-400 t-flex" id="bottom">
-        <div class="t-w-[50%] t-h-[100%] t-bg-green-400" id="bottom-left"><span>가나다</span></div>
-        <div id="bottom-right" class="t-w-[50%] t-h-[100%] t-bg-yellow-400"><span>가나다</span></div>
-    </div>
+    <div class="main-container-cover"
+         style="position: absolute; background-color: rgba(0, 0, 0, 0.4); z-index: 1 ;"></div>
 
 </div>
 
