@@ -89,15 +89,15 @@
 <!-- 일정 추가 팝업 끝 -->
 
 <!-- 일정 추가 -->
-<div class="container t-w-[1280px] t-h-[800px] t-mt-2 t-pt-0 t-pr-0 t-pl-0" style="border : 1px solid black ;">
-    <div class="top-con t-w-[100%] t-h-[50%] t-align-left t-flex" style="border-bottom : 2px solid black ;">
+<div class="container t-mt-2 t-flex-1 t-flex">
+    <div class="top-con t-grid t-grid-cols-1 lg:t-grid-cols-2 t-gap-3 t-flex-1">
 
 
-        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-green-200">
+        <div class="t-text-center t-bg-green-100">
             <form action="{% url 'su_list:green_list_delete'%}">
                 {% csrf_token %}
 
-                <div class="t-font-bold t-text-xl ">중요하지만 급하지 않아</div>
+                <div class="t-font-bold t-text-xl">중요하지만 급하지 않아</div>
                 <br>
                 <ul class="t-text-center t-pr-6" id="ul_list1">
                     <li class="t-text-center">공부하기</li>
@@ -114,7 +114,7 @@
         </div>
 
 
-        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-red-200" style="border-left : 2px solid black ;">
+        <div class="t-text-center t-bg-red-100">
             <form action="{% url 'su_list:red_list_delete'%}">
                 {% csrf_token %}
                 <div class="t-font-bold t-text-xl">중요하고 급해</div>
@@ -130,11 +130,7 @@
             </form>
         </div>
 
-    </div>
-
-
-    <div class="bottom-con t-w-[100%] t-h-[50%] t-align-left t-flex">
-        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-gray-200">
+        <div class="t-text-center t-bg-gray-100">
             <form action="{% url 'su_list:gray_list_delete'%}">
                 {% csrf_token %}
                 <div class="t-font-bold t-text-xl">중요하지도 않고 급하지도 않아</div>
@@ -150,8 +146,7 @@
             </form>
         </div>
 
-
-        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-yellow-200" style="border-left : 2px solid black ;">
+        <div class="t-text-center t-bg-yellow-100">
             <form action="{% url 'su_list:gold_list_delete'%}">
                 {% csrf_token %}
                 <div class="t-font-bold t-text-xl">중요하진 않은데 급해</div>
@@ -166,8 +161,8 @@
                 <input type="submit" class="btn btn-danger" value="삭제">
             </form>
         </div>
+
     </div>
-    <input type="submit">
 </div>
 
 <!-- 일정 추가 끝 -->

@@ -4,51 +4,172 @@
 {% block content %}
 
 
-<script>
-    function CartItemModifyForm__updateQuantity(el, add) {
-        const $form = $(el).closest('form');
-        const $salePrice = $form.find('.cart-item-modify-form__sale-price');
-        const productSalePrice = parseInt($salePrice.attr('data-sale-price'));
-        const $inputNumber = $form.find('input[type="number"]');
-        const oldQuantity = parseInt($inputNumber.val());
-        let newQuantity = oldQuantity + add;
-        if ( newQuantity > 100 ) {
-            newQuantity = 100;
-        }
-        else if ( newQuantity < 1 ) {
-            newQuantity = 1
-        }
-        $inputNumber.val(newQuantity);
-        $salePrice.text((productSalePrice * newQuantity).price_format());
-    }
 
-    function CartItems__allCheckBoxCheckChanged(el) {
-        if ( el.checked ) {
-            $('.cart-items__checkbox-item:not(:checked)').prop('checked', true);
-        }
-        else {
-            $('.cart-items__checkbox-item:checked').prop('checked', false);
-        }
-    }
+<div class="myModal modal1">
 
-    function CartItems__itemCheckeChanged(el) {
-        const allCheckBoxNewCheckStatus = $('.cart-items__checkbox-item:not(:checked)').length == 0
-        $('.cart-items__checkbox-all').prop('checked', allCheckBoxNewCheckStatus);
-    }
+    <div class="modal-content">
+        <span class="close"></span>
+        <p>중요하지만 급하지 않아</p>
+        <form method="POST" action="{% url 'su_list:green_list_create' %}">
+            {% csrf_token %}
+            <input id="text_add1" type="text" value=" " style="border: 1px solid black ;" class="text_add1"
+                   name="serious_no_urgent">
 
 
-</script>
+            <br><br><input type="submit" id="add1" value="Add" class="btn btn-primary add1">
+            <input type="button"
+                   name="cancel"
+                   value="Cancel"
+                   class="btn btn-primary cancel">
+        </form>
+    </div>
 
 
+</div>
+<div class="myModal modal2">
+    <div class="modal-content">
+        <span class="close"></span>
+        <p>중요하고 급해</p>
+        <form method="POST" action="{% url 'su_list:red_list_create' %}">
+            {% csrf_token %}
+            <input id="text_add2" type="text" value=" " style="border: 1px solid black ;" class="text_add2"
+                   name="serious_yes_urgent">
+
+            <div class=""><br><br><input type="submit" id="add2" value="Add" class="btn btn-primary add2">
+                <input type="button"
+                       name="cancel"
+                       value="Cancel"
+                       class="btn btn-primary cancel">
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="myModal modal3">
+    <div class="modal-content">
+        <span class="close"></span>
+        <p>중요하지도 않고 급하지도 않아</p>
+        <form method="POST" action="{% url 'su_list:gray_list_create' %}">
+            {% csrf_token %}
+            <input id="text_add3" type="text" value=" " style="border: 1px solid black ;" class="text_add3"
+                   name="no_serious_no_urgent">
+
+            <div class=""><br><br><input type="submit" id="add3" value="Add" class="btn btn-primary add3">
+                <input type="button"
+                       name="cancel"
+                       value="Cancel"
+                       class="btn btn-primary cancel">
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="myModal modal4">
+    <div class="modal-content">
+        <span class="close"></span>
+        <p>중요하진 않은데 급해</p>
+        <form method="POST" action="{% url 'su_list:gold_list_create' %}">
+            {% csrf_token %}
+            <input id="text_add4" type="text" value=" " style="border: 1px solid black ;" class="text_add4"
+                   name="no_serious_yes_urgent">
+
+            <div class=""><br><br><input type="submit" id="add4" value="Add" class="btn btn-primary add4">
+                <input type="button"
+                       name="cancel"
+                       value="Cancel"
+                       class="btn btn-primary cancel">
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 일정 추가 팝업 끝 -->
+
+<!-- 일정 추가 -->
+<div class="container t-w-[1280px] t-h-[800px] t-mt-2 t-pt-0 t-pr-0 t-pl-0" style="border : 1px solid black ;">
+    <div class="top-con t-w-[100%] t-h-[50%] t-align-left t-flex" style="border-bottom : 2px solid black ;">
 
 
-<ul id="ul_list">
-	<li>사과</li>
-	<li>바나나</li>
-	<li>오렌지</li>
-	<li>딸기</li>
-	<li>망고</li>
-</ul>
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-green-100">
+            <form action="{% url 'su_list:green_list_delete'%}">
+                {% csrf_token %}
+
+                <div class="t-font-bold t-text-xl">중요하지만 급하지 않아</div>
+                <br>
+                <ul class="t-text-center t-pr-6" id="ul_list1">
+                    <li class="t-text-center">공부하기</li>
+                    {% for list1 in green_list %}
+                    <div>{{ list1.serious_no_urgent}}</div>
+                    {% endfor %}
+
+
+                </ul>
+
+                <button type="button" class="btn btn-success add-green">추가</button>
+                <input type="submit" class="btn btn-danger" value="삭제">
+            </form>
+        </div>
+
+
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-red-100" style="border-left : 2px solid black ;">
+            <form action="{% url 'su_list:red_list_delete'%}">
+                {% csrf_token %}
+                <div class="t-font-bold t-text-xl">중요하고 급해</div>
+                <br>
+                <ul class="t-pr-6" id="ul_list2">
+                    <li class="t-text-center">Hello, World!</li>
+                    {% for list1 in red_list %}
+                    <div>{{ list1.serious_yes_urgent}}</div>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="btn btn-outline-danger add-red t-red-400">추가</button>
+                <input type="submit" class="btn btn-danger" value="삭제">
+            </form>
+        </div>
+
+    </div>
+
+
+    <div class="bottom-con t-w-[100%] t-h-[50%] t-align-left t-flex">
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-gray-100">
+            <form action="{% url 'su_list:gray_list_delete'%}">
+                {% csrf_token %}
+                <div class="t-font-bold t-text-xl">중요하지도 않고 급하지도 않아</div>
+                <br>
+                <ul class="t-text-center t-pr-6" id="ul_list3">
+                    <li class="t-text-center">Hello, World!</li>
+                    {% for list1 in gray_list %}
+                    <div>{{ list1.no_serious_no_urgent}}</div>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="btn btn-secondary add-gray">추가</button>
+                <input type="submit" class="btn btn-danger" value="삭제">
+            </form>
+        </div>
+
+
+        <div class=" t-w-[50%] t-h-[100%] t-text-center t-bg-yellow-100" style="border-left : 2px solid black ;">
+            <form action="{% url 'su_list:gold_list_delete'%}">
+                {% csrf_token %}
+                <div class="t-font-bold t-text-xl">중요하진 않은데 급해</div>
+                <br>
+                <ul class="t-text-center t-pr-6" id="ul_list4">
+                    <li class="t-text-center">배고픔을 이겨내기</li>
+                    {% for list1 in gold_list %}
+                    <div>{{ list1.no_serious_yes_urgent}}</div>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="btn btn-warning add-gold">추가</button>
+                <input type="submit" class="btn btn-danger" value="삭제">
+            </form>
+        </div>
+    </div>
+    <input type="submit">
+</div>
+
+<!-- 일정 추가 끝 -->
+
 
 
 {% endblock %}
