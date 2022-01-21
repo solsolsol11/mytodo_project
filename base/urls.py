@@ -29,6 +29,7 @@ urlpatterns = [
     path('', views.index, name="main"),
     path('su_list/', include('su_list.urls')),
     path('main3/', views.index3, name="main3"),
+    path('main4/', views.index4, name="main4"),
     path('identicon/image/<path:data>/', pydenticon_image, name='pydenticon_image'),
 
 ]

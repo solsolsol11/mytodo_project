@@ -17,3 +17,6 @@ def index(request):
 
 def index3(request):
     return render(request, "home/main3.html")
+
+def index4(request):
+    return render(request, "home/main4.html")
