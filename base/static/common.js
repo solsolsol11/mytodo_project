@@ -202,20 +202,34 @@ function action_add(){
 
 // 체크박스 시작
 
-/* 중요하지만 급하지 않아 체크박스 전체 선택 */
 
+/* 체크박스 테스트케이스 */
 $('.form-1__checkbox-all').change(function() {
   if ( this.checked ) {
     $('.form-1__checkbox-item:not(:checked)').prop('checked', true);
   }
 });
+/* 체크박스 테스트케이스 끝 */
 
 
+
+/* 중요하지만 급하지 않아 체크박스 전체 선택 */
 $('.green__check_all').change(function() {
   if ( this.checked ) {
     $('.green_check__item:not(:checked)').prop('checked', true);
   }
+  else{
+    $('.green_check__item:checked').prop('checked', false);
+  }
 });
+
+$('.green_check__item').change(function(){
+    let allChecked = $('.green_check__item:not(:checked)').length == 0;
+    $('.green__check_all').prop('checked', allChecked);
+});
+/* 중요하지만 급하지 않아 체크박스 전체 선택 끝 */
+
+
 
 // 체크박스 끝
 
