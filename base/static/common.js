@@ -229,6 +229,53 @@ $('.green_check__item').change(function(){
 });
 /* 중요하지만 급하지 않아 체크박스 전체 선택 끝 */
 
+/* 중요하고 급해 체크박스 전체 선택 */
+$('.red__check_all').change(function() {
+  if ( this.checked ) {
+    $('.red_check__item:not(:checked)').prop('checked', true);
+  }
+  else{
+    $('.red_check__item:checked').prop('checked', false);
+  }
+});
+
+$('.red_check__item').change(function(){
+    let allChecked = $('.red_check__item:not(:checked)').length == 0;
+    $('.red__check_all').prop('checked', allChecked);
+});
+/* 중요하고 급해 체크박스 전체 선택 끝 */
+
+/* 중요하지도 않고 급하지도 않아 체크박스 전체 선택 */
+$('.gray__check_all').change(function() {
+  if ( this.checked ) {
+    $('.gray_check__item:not(:checked)').prop('checked', true);
+  }
+  else{
+    $('.gray_check__item:checked').prop('checked', false);
+  }
+});
+
+$('.gray_check__item').change(function(){
+    let allChecked = $('.gray_check__item:not(:checked)').length == 0;
+    $('.gray__check_all').prop('checked', allChecked);
+});
+/* 중요하지도 않고 급하지도 않아 체크박스 전체 선택 끝 */
+
+/* 중요하진 않은데 급해 체크박스 전체 선택 */
+$('.gold__check_all').change(function() {
+  if ( this.checked ) {
+    $('.gold_check__item:not(:checked)').prop('checked', true);
+  }
+  else{
+    $('.gold_check__item:checked').prop('checked', false);
+  }
+});
+
+$('.gold_check__item').change(function(){
+    let allChecked = $('.gold_check__item:not(:checked)').length == 0;
+    $('.gold__check_all').prop('checked', allChecked);
+});
+/* 중요하진 않은데 급해 체크박스 전체 선택 끝 */
 
 
 // 체크박스 끝

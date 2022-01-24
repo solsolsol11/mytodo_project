@@ -117,12 +117,12 @@
         <div class="t-text-center t-bg-red-100 t-border-4 t-border-gray-500">
             <form action="{% url 'su_list:red_list_delete'%}">
                 {% csrf_token %}
-                <div class="t-font-bold t-text-xl">중요하고 급해</div>
+                <div class="t-font-bold t-text-xl">중요하고 급해 <input type="checkbox" class="red__check_all"></div>
                 <br>
                 <ul class="t-pr-6" id="ul_list2">
 
                     {% for list1 in red_list %}
-                    <div>{{ list1.serious_yes_urgent}}</div>
+                    <div>{{ list1.serious_yes_urgent}} <input type="checkbox" class="red_check__item"></div>
                     {% endfor %}
                 </ul>
                 <button type="button" class="btn btn-outline-danger add-red t-red-400">추가</button>
@@ -133,12 +133,12 @@
         <div class="t-text-center t-bg-gray-100 t-border-4 t-border-gray-500">
             <form action="{% url 'su_list:gray_list_delete'%}">
                 {% csrf_token %}
-                <div class="t-font-bold t-text-xl">중요하지도 않고 급하지도 않아</div>
+                <div class="t-font-bold t-text-xl">중요하지도 않고 급하지도 않아 <input type="checkbox" class="gray__check_all"></div>
                 <br>
                 <ul class="t-text-center t-pr-6" id="ul_list3">
 
                     {% for list1 in gray_list %}
-                    <div>{{ list1.no_serious_no_urgent}}</div>
+                    <div>{{ list1.no_serious_no_urgent}} <input type="checkbox" class="gray_check__item"></div>
                     {% endfor %}
                 </ul>
                 <button type="button" class="btn btn-secondary add-gray">추가</button>
@@ -149,12 +149,12 @@
         <div class="t-text-center t-bg-yellow-100 t-border-4 t-border-gray-500">
             <form action="{% url 'su_list:gold_list_delete'%}">
                 {% csrf_token %}
-                <div class="t-font-bold t-text-xl">중요하진 않은데 급해</div>
+                <div class="t-font-bold t-text-xl">중요하진 않은데 급해 <input type="checkbox" class="gold__check_all"></div>
                 <br>
                 <ul class="t-text-center t-pr-6" id="ul_list4">
 
                     {% for list1 in gold_list %}
-                    <div>{{ list1.no_serious_yes_urgent}}</div>
+                    <div>{{ list1.no_serious_yes_urgent}} <input type="checkbox" class="gold_check__item"></div>
                     {% endfor %}
                 </ul>
                 <button type="button" class="btn btn-warning add-gold">추가</button>
