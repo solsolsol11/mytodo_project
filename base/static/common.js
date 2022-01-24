@@ -200,5 +200,24 @@ function action_add(){
 }
 // 테스트 끝
 
+// 체크박스 시작
+
+/* 중요하지만 급하지 않아 체크박스 전체 선택 */
+
+$('.form-1__checkbox-all').change(function() {
+  if ( this.checked ) {
+    $('.form-1__checkbox-item:not(:checked)').prop('checked', true);
+  }
+});
+
+
+$('.green__check_all').change(function() {
+  if ( this.checked ) {
+    $('.green_check__item:not(:checked)').prop('checked', true);
+  }
+});
+
+// 체크박스 끝
+
 
 

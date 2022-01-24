@@ -97,12 +97,12 @@
             <form action="{% url 'su_list:green_list_delete'%}">
                 {% csrf_token %}
 
-                <div class="t-font-bold t-text-xl">중요하지만 급하지 않아</div>
+                <div class="t-font-bold t-text-xl">중요하지만 급하지 않아 <input type="checkbox" class="green__check_all"></div>
                 <br>
                 <ul class="t-text-center t-pr-6" id="ul_list1">
-                    <li class="t-text-center">공부하기</li>
+                    
                     {% for list1 in green_list %}
-                    <div>{{ list1.serious_no_urgent}}</div>
+                    <div>{{ list1.serious_no_urgent}} <input type="checkbox" class="green_check__item"></div>
                     {% endfor %}
 
 
@@ -120,7 +120,7 @@
                 <div class="t-font-bold t-text-xl">중요하고 급해</div>
                 <br>
                 <ul class="t-pr-6" id="ul_list2">
-                    <li class="t-text-center">Hello, World!</li>
+
                     {% for list1 in red_list %}
                     <div>{{ list1.serious_yes_urgent}}</div>
                     {% endfor %}
@@ -136,7 +136,7 @@
                 <div class="t-font-bold t-text-xl">중요하지도 않고 급하지도 않아</div>
                 <br>
                 <ul class="t-text-center t-pr-6" id="ul_list3">
-                    <li class="t-text-center">Hello, World!</li>
+
                     {% for list1 in gray_list %}
                     <div>{{ list1.no_serious_no_urgent}}</div>
                     {% endfor %}
@@ -152,7 +152,7 @@
                 <div class="t-font-bold t-text-xl">중요하진 않은데 급해</div>
                 <br>
                 <ul class="t-text-center t-pr-6" id="ul_list4">
-                    <li class="t-text-center">배고픔을 이겨내기</li>
+
                     {% for list1 in gold_list %}
                     <div>{{ list1.no_serious_yes_urgent}}</div>
                     {% endfor %}
