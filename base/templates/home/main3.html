@@ -5,23 +5,35 @@
 {% block content %}
 
 
-<div class="test-con1">
-    <div class="t-flex">
-        <div class="t-bg-red-100">text1</div>
-        <div class="t-bg-red-200">img1</div>
-    </div>
-    <div class="t-flex">
-        <div class="t-bg-red-300">img2</div>
-        <div class="t-bg-red-400">text2</div>
+<div class="t-container t-grid t-flex-1 sm:  t-text-center t-m-0 t-m-[auto] lg:t-text-xl">
+    <div class="t-flex t-mt-5">
+        <div class="t-border-4 t-border-gray-500 t-bg-red-100 t-w-[70%] t-pt-3 t-pr-3 t-text-right">
+            <h4>스티븐 코비 7가지 습관에서. . .</h4>
+            <div class="t-leading-[40px]">
+                <span class="">사람은 급하고 중요한 일을 처리하는데 대부분의 시간을 보내고<br></span>
+                <span>급하지도 않고 중요하지도 않은 일에는
+                <br>최소한의 관심을 준다</span>
+                <span><br>( 게임, 쇼핑, TV보기 등 )</span>
+            </div>
 
+        </div>
+        <div class="t-bg-red-300 t-w-[30%] t-bg-cover t-bg-[url('https://picsum.photos/id/240/300/300')]">1</div>
     </div>
-    <div class="t-flex">
-        <div class="t-bg-red-500">bt-text1</div>
-        <div class="t-bg-red-700">bt-text2</div>
+    <div class="t-flex t-text-left">
+        <div class="t-bg-red-400 t-w-[30%] t-bg-cover t-bg-[url('https://picsum.photos/id/301/300/300')]">1</div>
+        <div class="t-bg-red-500 t-w-[70%] t-pt-4 t-pl-2 t-border-gray-500 t-border-r-4 t-border-l-4">
+            <span>급하지 않지만 중요한일은<br><br> <br> 본인의 성장을 위한 자기계발<br>
+	그 과정이 힘들고 어려워서 안하게 된다.<br><br></span>
+            <span>위의 일은 길게봤을 때 무조건 긍정적은 영향을 준다<br>
+	노력하는 과정은 경험으로 남는다 .<br></span>
+        </div>
     </div>
-    <div class="t-flex">
-        <div class="t-bg-red-300">bt-text3</div>
-        <div class="t-bg-red-200">bt-text4</div>
+
+    <div class="t-grid t-grid-cols-4 t-border-4 t-border-gray-500">
+        <div class="t-border-gray-500 t-bg-blue-100 t-leading-[30px] t-border-r-4">순서에 얽매이면<br> 긴급한 일, 중요한 일을 <br>놓치기 쉽다</div>
+        <div class="t-border-gray-500 t-bg-yellow-100 t-leading-[30px] t-border-r-4">중요한 일에만 매달리면 <br>시간이 촉박한 업무를 <br>제대로 하지 못한다</div>
+        <div class="t-border-gray-500 t-bg-green-100 t-leading-[30px] t-border-r-4">우선순위를 정한다</div>
+        <div class="t-border-gray-500 t-bg-purple-100 t-leading-[30px]">실행한다</div>
     </div>
 </div>
 

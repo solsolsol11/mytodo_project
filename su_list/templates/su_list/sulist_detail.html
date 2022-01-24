@@ -93,7 +93,7 @@
     <div class="top-con t-grid t-grid-cols-1 lg:t-grid-cols-2 t-gap-3 t-flex-1">
 
 
-        <div class="t-text-center t-bg-green-100">
+        <div class="t-text-center t-bg-green-100 t-border-4 t-border-gray-500">
             <form action="{% url 'su_list:green_list_delete'%}">
                 {% csrf_token %}
 
@@ -114,7 +114,7 @@
         </div>
 
 
-        <div class="t-text-center t-bg-red-100">
+        <div class="t-text-center t-bg-red-100 t-border-4 t-border-gray-500">
             <form action="{% url 'su_list:red_list_delete'%}">
                 {% csrf_token %}
                 <div class="t-font-bold t-text-xl">중요하고 급해</div>
@@ -130,7 +130,7 @@
             </form>
         </div>
 
-        <div class="t-text-center t-bg-gray-100">
+        <div class="t-text-center t-bg-gray-100 t-border-4 t-border-gray-500">
             <form action="{% url 'su_list:gray_list_delete'%}">
                 {% csrf_token %}
                 <div class="t-font-bold t-text-xl">중요하지도 않고 급하지도 않아</div>
@@ -146,7 +146,7 @@
             </form>
         </div>
 
-        <div class="t-text-center t-bg-yellow-100">
+        <div class="t-text-center t-bg-yellow-100 t-border-4 t-border-gray-500">
             <form action="{% url 'su_list:gold_list_delete'%}">
                 {% csrf_token %}
                 <div class="t-font-bold t-text-xl">중요하진 않은데 급해</div>
