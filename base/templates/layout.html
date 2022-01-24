@@ -46,7 +46,7 @@
     <nav class="navbar navbar-expand-md navbar-light fixed-top t-bg-purple-200">
         <div class="container">
             <div class="logo">
-                <a class="navbar-brand" href="{% url 'main' %}"><i class="fas fa-running"></i></a>
+                <a class="navbar-brand" href="{% url 'main' %}"><i class="fas fa-running"></i>내 할일은 내가 해</a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link t-whitespace-nowrap" href="{% url 'su_list:list' %}"><i class="fas fa-tshirt"></i>계획하기</a>
+                        <a class="nav-link t-whitespace-nowrap" href="{% url 'su_list:list' %}"><i class="fas fa-edit"></i>계획하기</a>
                     </li>
 
                     {% if user.is_authenticated %}
@@ -65,7 +65,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link t-whitespace-nowrap">
-                            <i class="fas fa-user"></i>
+
                             {{ user.name }}
                             {% if user.profile_img %}
                             <img src="{{ user.profile_img.url }}"
