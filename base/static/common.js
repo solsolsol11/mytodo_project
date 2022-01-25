@@ -214,7 +214,7 @@ $('.form-1__checkbox-all').change(function() {
 
 
 /* 중요하지만 급하지 않아 체크박스 전체 선택 */
-$('.green__check_all').change(function() {
+$('.green__check_all').change(function(el) {
   if ( this.checked ) {
     $('.green_check__item:not(:checked)').prop('checked', true);
   }
@@ -281,4 +281,16 @@ $('.gold_check__item').change(function(){
 // 체크박스 끝
 
 
+/* 선택삭제 시작 */
 
+    function SuList__deleteChecked() {
+        let SuListIds = $('.green_check__item:checked')
+            .map((i, el) => parseInt($(el).attr('data-id')))
+            .toArray();
+
+        SuListDeleteForm.ids.value = SuListIds;
+        console.log("성공")
+        SuListDeleteForm.submit();
+    }
+
+/* 선택삭제 끝 */
