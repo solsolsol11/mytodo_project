@@ -7,6 +7,7 @@ django-dotenv
 django_bootstrap5
 lazy-string
 requests
+django-debug-toolbar
 djangorestframework
 drf-writable-nested
 django-cors-headers
