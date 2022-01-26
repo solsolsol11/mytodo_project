@@ -7,7 +7,7 @@ DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'site7',
+        'NAME': 'site8',
         'USER': 'sbsstlocal',
         'PASSWORD': '1234',
         'HOST': '172.17.0.1',
