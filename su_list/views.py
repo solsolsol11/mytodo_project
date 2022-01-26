@@ -22,9 +22,6 @@ def green_list_delete(request: HttpRequest):
 
     ids = map(int, request.POST.get('ids').split(','))
 
-    if map(len == 0):
-        messages.success(request, "성공")
-
     green_lists = SeriousNoUrgentList.objects.filter(id__in=ids)
 
     for green_list in green_lists:
@@ -32,7 +29,7 @@ def green_list_delete(request: HttpRequest):
             raise PermissionError()
         green_list.delete()
     print('성공')
-    messages.success(request, "선택삭제완료")
+    messages.success(request, "실패")
 
     return redirect('su_list:list')
 
@@ -115,6 +112,11 @@ def green_list_create(request: HttpRequest):
             messages.success(request, "성공")
             print("성공")
             return redirect('su_list:list')
+        else:
+            messages.warning(request, "내용을 입력해주세요")
+            return redirect('su_list:list')
+
+
 
     return render(request, 'su_list/sulist_detail.html', {
         "form": form,
@@ -135,6 +137,9 @@ def red_list_create(request: HttpRequest):
             article2.save()
             messages.success(request, "성공")
             print("성공")
+            return redirect('su_list:list')
+        else:
+            messages.warning(request, "내용을 입력해주세요")
             return redirect('su_list:list')
 
     return render(request, 'su_list/sulist_detail.html', {
@@ -157,6 +162,9 @@ def gray_list_create(request: HttpRequest):
             messages.success(request, "성공")
             print("성공")
             return redirect('su_list:list')
+        else:
+            messages.warning(request, "내용을 입력해주세요")
+            return redirect('su_list:list')
 
     return render(request, 'su_list/sulist_detail.html', {
         "form": form,
@@ -177,6 +185,9 @@ def gold_list_create(request: HttpRequest):
             article4.save()
             messages.success(request, "성공")
             print("성공")
+            return redirect('su_list:list')
+        else:
+            messages.warning(request, "내용을 입력해주세요")
             return redirect('su_list:list')
 
     return render(request, 'su_list/sulist_detail.html', {

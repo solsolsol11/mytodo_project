@@ -287,13 +287,17 @@ $('.gold_check__item').change(function(){
 /* 선택삭제 시작 */
 
     function SuList__deleteChecked() {
-        let SuListIds = $('.green_check__item:checked')
+        const SuListIds = $('.green_check__item:checked')
             .map((i, el) => parseInt($(el).attr('data-id')))
             .toArray();
+            console.log("성공");
+
+
 
         SuListDeleteForm.ids.value = SuListIds;
         console.log("성공")
         SuListDeleteForm.submit();
+
 
 
 
