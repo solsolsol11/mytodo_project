@@ -154,3 +154,8 @@ AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = '/accounts/signin'
 
 LOGIN_REDIRECT_URL = '/'
+
+
+CSRF_TRUSTED_ORIGINS = ['https://mytodo.phsol.site']
+
+CORS_ORIGIN_WHITELIST = CSRF_TRUSTED_ORIGINS
