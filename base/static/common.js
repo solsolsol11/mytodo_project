@@ -223,8 +223,11 @@ $('.green__check_all').change(function(el) {
   }
 });
 
+
+
+
 $('.green_check__item').change(function(){
-    let allChecked = $('.green_check__item:not(:checked)').length == 0;
+    const allChecked = $('.green_check__item:not(:checked)').length == 0;
     $('.green__check_all').prop('checked', allChecked);
 });
 /* 중요하지만 급하지 않아 체크박스 전체 선택 끝 */
@@ -291,6 +294,11 @@ $('.gold_check__item').change(function(){
         SuListDeleteForm.ids.value = SuListIds;
         console.log("성공")
         SuListDeleteForm.submit();
+
+
+
+
+
     }
 
 /* 선택삭제 끝 */

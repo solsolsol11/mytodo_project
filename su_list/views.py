@@ -16,32 +16,25 @@ from su_list.models import SeriousNoUrgentList, SeriousYesUrgentList, NoSeriousN
 # 리스트 삭제
 # 중요하지만 급하지 않아 삭제
 @login_required
-
+@require_POST
 def green_list_delete(request: HttpRequest):
     print('성공')
+
     ids = map(int, request.POST.get('ids').split(','))
-    print(ids)
+
+    if map(len == 0):
+        messages.success(request, "성공")
+
     green_lists = SeriousNoUrgentList.objects.filter(id__in=ids)
 
     for green_list in green_lists:
         if green_list.user != request.user:
             raise PermissionError()
-    green_list.delete()
+        green_list.delete()
     print('성공')
     messages.success(request, "선택삭제완료")
 
     return redirect('su_list:list')
-
-
-def green_list_all_delete(request: HttpRequest):
-    green_list = models.SeriousNoUrgentList.objects.filter(user_id=request.user.id)
-
-    green_list.delete()
-
-    messages.success(request, "전체삭제완료")
-
-    return redirect('su_list:list')
-
 
 
 # 리스트 삭제

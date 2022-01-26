@@ -119,11 +119,7 @@
                 {% csrf_token %}
                 <button type="button" class="btn btn-success add-green btn-sm">추가</button>
                 <button type="button" class="btn btn-danger btn-sm" onclick="SuList__deleteChecked();">선택삭제</button>
-                <a onclick="if ( !confirm('정말 삭제하시겠습니까?') ) return false;"
-                                           href="{% url 'su_list:green_all_delete' %}" class="btn btn-danger btn-sm">
-                                            <i class="far fa-trash-alt"></i>
-                                            <span class="t-hidden sm:t-inline">전체삭제</span>
-                                        </a>
+
 
 
                 <input type="hidden" name="ids" value="">
