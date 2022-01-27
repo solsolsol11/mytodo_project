@@ -2,7 +2,9 @@ import os
 
 import requests
 from django.contrib import messages
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import logout_then_login, LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -139,3 +141,23 @@ def kakao_signin_callback(request):
     messages.success(request, "카카오톡 계정으로 로그인되었습니다")
 
     return redirect("main")
+
+
+# 비밀번호 변경
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, '비밀번호가 성공적으로 변경되었습니다')
+            return redirect('main')
+        else:
+            messages.error(request, '형식이 잘못되었습니다')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {
+        'form': form
+    })

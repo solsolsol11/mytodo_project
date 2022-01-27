@@ -284,7 +284,13 @@ $('.gold_check__item').change(function(){
 // 체크박스 끝
 
 
+
+
+
 /* 선택삭제 시작 */
+
+
+/* 중요하지만 급하지 않아 선택삭제 */
 
     function GreenList__deleteChecked() {
         const GreenListIds = $('.green_check__item:checked')
@@ -303,6 +309,10 @@ $('.gold_check__item').change(function(){
 
     }
 
+/* 중요하지만 급하지 않아 선택삭제 끝 */
+
+/* 중요하고 급해 선택삭제 */
+
         function RedList__deleteChecked() {
         const RedListIds = $('.red_check__item:checked')
             .map((i, el) => parseInt($(el).attr('data-id')))
@@ -319,6 +329,10 @@ $('.gold_check__item').change(function(){
         RedListDeleteForm.submit();
 
     }
+
+/* 중요하고 급해 선택삭제 끝 */
+
+/* 중요하지도 않고 급하지도 않아 선택삭제 */
 
         function GrayList__deleteChecked() {
         const GrayListIds = $('.gray_check__item:checked')
@@ -337,6 +351,9 @@ $('.gold_check__item').change(function(){
 
     }
 
+    /* 중요하지도 않고 급하지도 않아 선택삭제  끝 */
+
+/* 중요하진 않은데 급해 선택삭제 */
         function GoldList__deleteChecked() {
         const GoldListIds = $('.gold_check__item:checked')
             .map((i, el) => parseInt($(el).attr('data-id')))
@@ -353,5 +370,8 @@ $('.gold_check__item').change(function(){
         GoldListDeleteForm.submit();
 
     }
+
+    /* 중요하진 않은데 급해 선택삭제 끝 */
+
 
 /* 선택삭제 끝 */
