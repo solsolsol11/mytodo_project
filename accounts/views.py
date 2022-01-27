@@ -170,7 +170,9 @@ def update(request):
         user_change_form = CustomUserChangeForm(request.POST, instance=request.user)
         if user_change_form.is_valid():
             user_change_form.save()
-            return redirect('accounts:people', request.user.username)
+            messages.success(request, '회원정보가 수정되었습니다')
+            return redirect('main')
+
 
     else:
         user_change_form = CustomUserChangeForm(instance=request.user)
