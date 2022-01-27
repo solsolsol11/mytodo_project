@@ -4,7 +4,7 @@ import requests
 from django.contrib import messages
 from django.contrib.auth import login as auth_login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.views import logout_then_login, LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -17,7 +17,7 @@ from lazy_string import LazyString
 
 from .decorators import logout_required
 # Create your views here.
-from .forms import SignupForm, FindUsernameForm
+from .forms import SignupForm, FindUsernameForm, CustomUserChangeForm
 from .models import User
 
 
@@ -160,4 +160,20 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'accounts/change_password.html', {
         'form': form
+    })
+
+# 회원정보 수정
+
+@login_required
+def update(request):
+    if request.method == 'POST':
+        user_change_form = CustomUserChangeForm(request.POST, instance=request.user)
+        if user_change_form.is_valid():
+            user_change_form.save()
+            return redirect('accounts:people', request.user.username)
+
+    else:
+        user_change_form = CustomUserChangeForm(instance=request.user)
+    return render(request, 'accounts/update.html', {
+        'user_change_form': user_change_form
     })
