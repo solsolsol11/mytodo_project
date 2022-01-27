@@ -4,8 +4,6 @@
 {% block content %}
 
 
-
-
 <!-- 일정 추가 팝업 -->
 
 <div class="myModal modal1">
@@ -115,11 +113,10 @@
 
             </ul>
 
-            <form method="POST" action="{% url 'su_list:green_list_delete'%}" class="" name="SuListDeleteForm">
+            <form method="POST" action="{% url 'su_list:green_list_delete'%}" class="" name="GreenListDeleteForm">
                 {% csrf_token %}
                 <button type="button" class="btn btn-success add-green btn-sm">추가</button>
-                <button type="button" class="btn btn-danger btn-sm" onclick="SuList__deleteChecked();">선택삭제</button>
-
+                <button type="button" class="btn btn-danger btn-sm" onclick="GreenList__deleteChecked();">선택삭제</button>
 
 
                 <input type="hidden" name="ids" value="">
@@ -130,54 +127,60 @@
 
 
         <div class="t-text-center t-bg-red-100 t-border-4 t-border-gray-500">
-            <form action="{% url 'su_list:red_list_delete'%}">
-                {% csrf_token %}
-                <div class="t-font-bold t-text-xl t-flex t-items-center t-justify-center">
-                    <span class="sulist_title t-mt-[0.8rem] t-mr-[0.5rem]">중요하고 급해</span>
 
-                    <input type="checkbox" class="red__check_all">
+            <div class="t-font-bold t-text-xl t-flex t-items-center t-justify-center">
+                <span class="sulist_title t-mt-[0.8rem] t-mr-[0.5rem]">중요하고 급해</span>
+
+                <input type="checkbox" class="red__check_all">
+            </div>
+            <br>
+            <ul class="t-pr-6" id="ul_list2">
+
+                {% for list1 in red_list %}
+                <div class="t-flex t-items-center t-justify-center">
+                    <span class="t-mt-[0.6rem] t-mr-[0.7rem]">{{ list1.serious_yes_urgent}}</span>
+                    <input type="checkbox" class="red_check__item" data-id="{{ list1.id }}">
                 </div>
-                <br>
-                <ul class="t-pr-6" id="ul_list2">
+                {% endfor %}
+            </ul>
 
-                    {% for list1 in red_list %}
-                    <div class="t-flex t-items-center t-justify-center">
-                        <span class="t-mt-[0.6rem] t-mr-[0.7rem]">{{ list1.serious_yes_urgent}}</span>
-                        <input type="checkbox" class="red_check__item">
-                    </div>
-                    {% endfor %}
-                </ul>
+            <form method="POST" action="{% url 'su_list:red_list_delete'%}" name="RedListDeleteForm">
+                {% csrf_token %}
                 <button type="button" class="btn btn-outline-danger add-red t-red-400">추가</button>
-                <input type="submit" class="btn btn-danger" value="삭제">
+                <button type="button" class="btn btn-danger btn-sm" onclick="RedList__deleteChecked();">선택삭제</button>
+
+                <input type="hidden" name="ids" value="">
             </form>
         </div>
 
         <div class="t-text-center t-bg-gray-100 t-border-4 t-border-gray-500">
-            <form action="{% url 'su_list:gray_list_delete'%}">
-                {% csrf_token %}
 
-                <div class="t-font-bold t-text-xl t-flex t-items-center t-justify-center">
-                    <span class="sulist_title t-mt-[0.7rem] t-mr-[0.5rem]">중요하지도 않고 급하지도 않아</span>
-                    <input type="checkbox" class="gray__check_all">
+
+            <div class="t-font-bold t-text-xl t-flex t-items-center t-justify-center">
+                <span class="sulist_title t-mt-[0.7rem] t-mr-[0.5rem]">중요하지도 않고 급하지도 않아</span>
+                <input type="checkbox" class="gray__check_all">
+            </div>
+            <br>
+            <ul class="t-text-center t-pr-6" id="ul_list3">
+
+                {% for list1 in gray_list %}
+                <div class="t-flex t-items-center t-justify-center">
+                    <span class="t-mt-[0.6rem] t-mr-[0.7rem]">{{ list1.no_serious_no_urgent}}</span>
+                    <input type="checkbox" class="gray_check__item" data-id="{{ list1.id }}">
                 </div>
-                <br>
-                <ul class="t-text-center t-pr-6" id="ul_list3">
-
-                    {% for list1 in gray_list %}
-                    <div class="t-flex t-items-center t-justify-center">
-                        <span class="t-mt-[0.6rem] t-mr-[0.7rem]">{{ list1.no_serious_no_urgent}}</span>
-                        <input type="checkbox" class="gray_check__item">
-                    </div>
-                    {% endfor %}
-                </ul>
+                {% endfor %}
+            </ul>
+            <form method="POST" action="{% url 'su_list:gray_list_delete'%}" name="GrayListDeleteForm">
+                {% csrf_token %}
                 <button type="button" class="btn btn-secondary add-gray">추가</button>
-                <input type="submit" class="btn btn-danger" value="삭제">
+                <button type="button" class="btn btn-danger btn-sm" onclick="GrayList__deleteChecked();">선택삭제</button>
+
+                <input type="hidden" name="ids" value="">
             </form>
         </div>
 
         <div class="t-text-center t-bg-yellow-100 t-border-4 t-border-gray-500">
-            <form action="{% url 'su_list:gold_list_delete'%}">
-                {% csrf_token %}
+
                 <div class="t-font-bold t-text-xl t-flex t-items-center t-justify-center">
                     <span class="sulist_title t-mt-[0.7rem] t-mr-[0.5rem]">중요하진 않은데 급해</span>
 
@@ -189,12 +192,16 @@
                     {% for list1 in gold_list %}
                     <div class="t-flex t-items-center t-justify-center">
                         <span class="t-mt-[0.6rem] t-mr-[0.7rem]">{{ list1.no_serious_yes_urgent}}</span>
-                        <input type="checkbox" class="gold_check__item">
+                        <input type="checkbox" class="gold_check__item" data-id="{{ list1.id }}">
                     </div>
                     {% endfor %}
                 </ul>
+            <form method="POST" action="{% url 'su_list:gold_list_delete'%}" name="GoldListDeleteForm">
+                {% csrf_token %}
                 <button type="button" class="btn btn-warning add-gold">추가</button>
-                <input type="submit" class="btn btn-danger" value="삭제">
+                <button type="button" class="btn btn-danger btn-sm" onclick="GoldList__deleteChecked();">선택삭제</button>
+
+                <input type="hidden" name="ids" value="">
             </form>
         </div>
 

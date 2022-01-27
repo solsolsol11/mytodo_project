@@ -29,7 +29,7 @@ def green_list_delete(request: HttpRequest):
             raise PermissionError()
         green_list.delete()
     print('성공')
-    messages.success(request, "실패")
+    messages.success(request, "선택한 목록이 삭제되었습니다.")
 
     return redirect('su_list:list')
 
@@ -40,11 +40,16 @@ def green_list_delete(request: HttpRequest):
 def red_list_delete(request: HttpRequest):
     print('성공')
 
-    red_list = models.SeriousYesUrgentList.objects.filter(user_id=request.user.id)
+    ids = map(int, request.POST.get('ids').split(','))
 
-    red_list.delete()
+    red_lists = SeriousYesUrgentList.objects.filter(id__in=ids)
+
+    for red_list in red_lists:
+        if red_list.user != request.user:
+            raise PermissionError()
+        red_list.delete()
     print('성공')
-    messages.success(request, "삭제완료")
+    messages.success(request, "선택한 목록이 삭제되었습니다.")
 
     return redirect('su_list:list')
 
@@ -54,11 +59,16 @@ def red_list_delete(request: HttpRequest):
 def gray_list_delete(request: HttpRequest):
     print('성공')
 
-    gray_list = models.NoSeriousNoUrgent.objects.filter(user_id=request.user.id)
+    ids = map(int, request.POST.get('ids').split(','))
 
-    gray_list.delete()
+    gray_lists = NoSeriousNoUrgent.objects.filter(id__in=ids)
+
+    for gray_list in gray_lists:
+        if gray_list.user != request.user:
+            raise PermissionError()
+        gray_list.delete()
     print('성공')
-    messages.success(request, "삭제완료")
+    messages.success(request, "선택한 목록이 삭제되었습니다.")
 
     return redirect('su_list:list')
 
@@ -68,11 +78,16 @@ def gray_list_delete(request: HttpRequest):
 def gold_list_delete(request: HttpRequest):
     print('성공')
 
-    gold_list = models.NoSeriousYesUrgent.objects.filter(user_id=request.user.id)
+    ids = map(int, request.POST.get('ids').split(','))
 
-    gold_list.delete()
+    gold_lists = NoSeriousYesUrgent.objects.filter(id__in=ids)
+
+    for gold_list in gold_lists:
+        if gold_list.user != request.user:
+            raise PermissionError()
+        gold_list.delete()
     print('성공')
-    messages.success(request, "삭제완료")
+    messages.success(request, "선택한 목록이 삭제되었습니다.")
 
     return redirect('su_list:list')
 

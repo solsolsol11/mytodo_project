@@ -286,22 +286,71 @@ $('.gold_check__item').change(function(){
 
 /* 선택삭제 시작 */
 
-    function SuList__deleteChecked() {
-        const SuListIds = $('.green_check__item:checked')
+    function GreenList__deleteChecked() {
+        const GreenListIds = $('.green_check__item:checked')
             .map((i, el) => parseInt($(el).attr('data-id')))
             .toArray();
             console.log("성공");
 
+        if (GreenListIds.length == 0){
+            alert('삭제할 대상을 선택해주세요.');
+            return;
+        }
 
-
-        SuListDeleteForm.ids.value = SuListIds;
+        GreenListDeleteForm.ids.value = GreenListIds;
         console.log("성공")
-        SuListDeleteForm.submit();
+        GreenListDeleteForm.submit();
 
+    }
 
+        function RedList__deleteChecked() {
+        const RedListIds = $('.red_check__item:checked')
+            .map((i, el) => parseInt($(el).attr('data-id')))
+            .toArray();
+            console.log("성공");
 
+        if (RedListIds.length == 0){
+            alert('삭제할 대상을 선택해주세요.');
+            return;
+        }
 
+        RedListDeleteForm.ids.value = RedListIds;
+        console.log("성공")
+        RedListDeleteForm.submit();
 
+    }
+
+        function GrayList__deleteChecked() {
+        const GrayListIds = $('.gray_check__item:checked')
+            .map((i, el) => parseInt($(el).attr('data-id')))
+            .toArray();
+            console.log("성공");
+
+        if (GrayListIds.length == 0){
+            alert('삭제할 대상을 선택해주세요.');
+            return;
+        }
+
+        GrayListDeleteForm.ids.value = GrayListIds;
+        console.log("성공")
+        GrayListDeleteForm.submit();
+
+    }
+
+        function GoldList__deleteChecked() {
+        const GoldListIds = $('.gold_check__item:checked')
+            .map((i, el) => parseInt($(el).attr('data-id')))
+            .toArray();
+            console.log("성공");
+
+        if (GoldListIds.length == 0){
+            alert('삭제할 대상을 선택해주세요.');
+            return;
+        }
+
+        GoldListDeleteForm.ids.value = GoldListIds;
+        console.log("성공")
+        GoldListDeleteForm.submit();
 
     }
 
