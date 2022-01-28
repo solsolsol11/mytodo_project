@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import login as auth_login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
-from django.contrib.auth.views import logout_then_login, LoginView
+from django.contrib.auth.views import logout_then_login, LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 
 from django.db.models import QuerySet
@@ -184,3 +184,27 @@ def update(request):
 def profile(request):
 
     return render(request, "accounts/profile.html")
+
+
+
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = 'accounts/password_reset.html' #템플릿을 변경하려면 이와같은 형식으로 입력
+
+    def form_valid(self, form):
+        if User.objects.filter(email=self.request.POST.get("email")).exists():
+            opts = {
+                'use_https': self.request.is_secure(),
+                'token_generator': self.token_generator,
+                'from_email': self.from_email,
+                'email_template_name': self.email_template_name,
+                'subject_template_name': self.subject_template_name,
+                'request': self.request,
+                'html_email_template_name': self.html_email_template_name,
+                'extra_email_context': self.extra_email_context,
+            }
+            form.save(**opts)
+            return super().form_valid(form)
+        else:
+            return render(self.request, 'accounts/password_reset_done_fail.html')
+
