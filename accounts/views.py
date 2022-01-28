@@ -167,15 +167,15 @@ def change_password(request):
 @login_required
 def update(request):
     if request.method == 'POST':
-        user_change_form = CustomUserChangeForm(request.POST,request.FILES, instance=request.user)
-        if user_change_form.is_valid():
-            user_change_form.save()
+        form = CustomUserChangeForm(request.POST,request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
             messages.success(request, '회원정보가 수정되었습니다')
             return redirect('main')
 
 
     else:
-        user_change_form = CustomUserChangeForm(instance=request.user)
+        form = CustomUserChangeForm(instance=request.user)
     return render(request, 'accounts/update.html', {
-        'user_change_form': user_change_form
+        'form': form,
     })
