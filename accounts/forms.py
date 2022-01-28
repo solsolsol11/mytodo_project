@@ -35,8 +35,19 @@ class SignupForm(UserCreationForm):
         return email
 
 
-class CustomUserChangeForm(UserChangeForm):
 
-    class Meta:
-        model = get_user_model()
+
+
+
+
+class CustomUserChangeForm(UserChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].required = True
+        self.fields['name'].required = True
+        self.fields['profile_img'].widget.attrs['accept'] = 'image/png, image/gif, image/jpeg'
+        self.fields['password'].widget = forms.HiddenInput()
+    class Meta(UserChangeForm.Meta):
+        model = User
         fields = ['name', 'email', 'gender', 'profile_img']
+
