@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% load django_bootstrap5 %}
+
+
+{% block content %}
+
+
+<section class=" t-flex-auto t-flex t-items-center t-justify-center">
+    <div class="card t-w-full t-max-w-screen-md mx-4">
+        <div class="card-header t-flex">
+            <h3 class="t-w-[90%]">회원정보</h3>
+            <a href="{% url 'accounts:update' %}" class="t-whitespace-nowrap btn btn-secondary">
+                            <i class="fas fa-user-cog"></i>정보수정
+                        </a>
+
+        </div>
+        <div class="card-body">
+            <div class="t-flex-auto t-flex">
+                {% if user.profile_img %}
+                <div class="t-w-[20%]">
+                    <img src="{{ user.profile_img.url }}"
+                         style="width:100px; height:100px; object-fit:cover; border-radius:50%; display:inline-block;"/>
+                </div>
+
+                {% else %}
+                이름 : <h2>{{ user.name }}</h2>
+                <img src="{% url 'pydenticon_image' user.username %}"
+                     style="width:24px; display:inline-block;border-radius:50%; "/>
+                {% endif %}
+                <div class="t-flex-col">
+                    <div class="t-flex">
+                        <h2>성명 :&nbsp;</h2>
+                        <h4>{{ user.name }}</h4>
+                    </div>
+                    <br>
+                    <div class="t-flex">
+                        <h2>이메일 :&nbsp;</h2>
+                        <h4>{{ user.email }}</h4>
+                    </div>
+
+                    <div class="t-flex">
+                        <h2>성별 :&nbsp;</h2>
+                        <h4>{{ user.gender }}</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</section>
+
+
+{% endblock %}

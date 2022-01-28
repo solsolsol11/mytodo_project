@@ -14,7 +14,7 @@
             <div class="id_box">
                 <span>아이디 : {{ request.user.username }}</span>
             </div>
-            <a class="btn btn-success" href="{% url 'accounts:change_password' %}">비밀번호 변경</a>
+            <br><a class="btn btn-success" href="{% url 'accounts:change_password' %}">비밀번호 변경</a><br>
             <br>
             {% if error_message %}
             {{ error_message }}
@@ -26,6 +26,7 @@
                 {% bootstrap_form form %}
                 <br>
                 {% bootstrap_button button_type="submit" content="변경" %}
+                {% bootstrap_button button_type="link" href=main_url content="취소" button_class="btn-outline-primary" %}
 
             </form>
         </div>

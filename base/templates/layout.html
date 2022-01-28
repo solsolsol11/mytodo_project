@@ -64,8 +64,10 @@
                                 class="fas fa-sign-out-alt"></i>로그아웃</a>
                     </li>
 
+
+
                     <li class="nav-item">
-                        <a href="{% url 'accounts:update' %}" class="nav-link t-whitespace-nowrap">
+                        <a href="{% url 'accounts:profile' %}" class="nav-link t-whitespace-nowrap">
 
                             {{ user.name }}
                             {% if user.profile_img %}
@@ -77,6 +79,8 @@
                             {% endif %}
                         </a>
                     </li>
+
+
 
                     {% else %}
                     <li class="nav-item t-whitespace-nowrap">

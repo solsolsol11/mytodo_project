@@ -179,3 +179,8 @@ def update(request):
     return render(request, 'accounts/update.html', {
         'form': form,
     })
+
+@login_required
+def profile(request):
+
+    return render(request, "accounts/profile.html")
