@@ -7,12 +7,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.views import logout_then_login, LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.mail import EmailMessage
 
 from django.db.models import QuerySet
 from django.forms import ModelForm
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from lazy_string import LazyString
 
 from .decorators import logout_required
@@ -111,9 +113,6 @@ def kakao_signin_callback(request):
     REST_API_KEY = os.environ.get("KAKAO_APP__REST_API_KEY")
     REDIRECT_URI = os.environ.get("KAKAO_APP__LOGIN__REDIRECT_URI")
 
-
-
-
     # (2)
     token_request = requests.get(
         f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={REST_API_KEY}&redirect_uri={REDIRECT_URI}&code={code}"
@@ -162,12 +161,13 @@ def change_password(request):
         'form': form
     })
 
+
 # 회원정보 수정
 
 @login_required
 def update(request):
     if request.method == 'POST':
-        form = CustomUserChangeForm(request.POST,request.FILES, instance=request.user)
+        form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, '회원정보가 수정되었습니다')
@@ -180,16 +180,14 @@ def update(request):
         'form': form,
     })
 
+
 @login_required
 def profile(request):
-
     return render(request, "accounts/profile.html")
 
 
-
-
 class UserPasswordResetView(PasswordResetView):
-    template_name = 'accounts/password_reset.html' #템플릿을 변경하려면 이와같은 형식으로 입력
+    template_name = 'accounts/password_reset.html'  # 템플릿을 변경하려면 이와같은 형식으로 입력
 
     def form_valid(self, form):
         if User.objects.filter(email=self.request.POST.get("email")).exists():
@@ -207,4 +205,15 @@ class UserPasswordResetView(PasswordResetView):
             return super().form_valid(form)
         else:
             return render(self.request, 'accounts/password_reset_done_fail.html')
+
+
+
+
+def send_email(request):
+    subject = "message"
+    to = ["ushio941@gmail.com"]
+    from_email = "ushio941@gmail.com"
+    message = "메시지 테스트"
+    EmailMessage(subject=subject, body=message, to=to, from_email=from_email).send()
+
 

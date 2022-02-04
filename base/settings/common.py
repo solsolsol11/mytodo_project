@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'django_pydenticon',
     'crispy_forms',
+    "crispy_bootstrap5",
     # Local App
     'accounts.apps.AccountsConfig',
     'board.apps.BoardConfig',
@@ -48,7 +49,9 @@ INSTALLED_APPS = [
     'su_list.apps.SuListConfig',
 ]
 
-CRISPY_TEMPLATE_PACK = 'django-bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -164,10 +167,26 @@ CSRF_TRUSTED_ORIGINS = ['https://mytodo.phsol.site']
 CORS_ORIGIN_WHITELIST = CSRF_TRUSTED_ORIGINS
 
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# Email 전송
+# 메일을 호스트하는 서버
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+
+# gmail과의 통신하는 포트
+EMAIL_PORT = '587'
+
+# 발신할 이메일
+# EMAIL_HOST_USER = '구글아이디@gmail.com'
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+
+# 발신할 메일의 비밀번호
+# EMAIL_HOST_PASSWORD = '구글비밀번호'
+EMAIL_HOST_PASSWORD =os.environ.get("EMAIL_HOST_PASSWORD")
+
+# TLS 보안 방법
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
+# 사이트와 관련한 자동응답을 받을 이메일 주소
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+
