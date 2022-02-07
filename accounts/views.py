@@ -51,6 +51,8 @@ def signout(request: HttpRequest):
 
 @logout_required
 def signup(request: HttpRequest):
+
+
     if request.method == 'POST':
         form = SignupForm(request.POST, request.FILES)
         if form.is_valid():

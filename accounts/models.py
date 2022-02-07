@@ -83,6 +83,8 @@ class User(AbstractUser):
 
     # https://github.com/askcompany-kr/django-with-react-rev2/ 참조
     def send_welcome_email(self) -> None:
+        import pdb
+        pdb.set_trace()
         if not self.email:
             return
         subject = render_to_string("accounts/welcome_email_subject.txt", {
