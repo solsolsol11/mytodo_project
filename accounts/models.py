@@ -1,13 +1,18 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from accounts.forms import SignupForm
+
 from django.conf import settings
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.contrib.auth.models import AbstractUser
 from django.core.mail import send_mail
 from django.db import models
 from django.db.models import QuerySet
 from django.http import HttpRequest
+from django.shortcuts import resolve_url
 from django.template.loader import render_to_string
-
-from accounts.forms import SignupForm
 
 
 class User(AbstractUser):
@@ -49,8 +54,8 @@ class User(AbstractUser):
             password = ""
 
             user = User.join(username=username, email=email, password=password, first_name=name,
-                                   provider_type_code=provider_type_code,
-                                   provider_accounts_id=provider_accounts_id)
+                             provider_type_code=provider_type_code,
+                             provider_accounts_id=provider_accounts_id)
 
         else:
             user: User = qs.first()
@@ -62,22 +67,22 @@ class User(AbstractUser):
         user = User.objects.create_user(username=username, email=email, password=password, namzxe=name,
                                         provider_type_code=provider_type_code,
                                         provider_accounts_id=provider_accounts_id)
-        cls.after_join(user)
+        cls.after_signup(user)
 
         return user
 
     @classmethod
-    def join_by_form(cls, form: SignupForm) -> User:
+    def signup_by_form(cls, form: SignupForm) -> User:
         user = form.save()
-        cls.after_join(user)
+        cls.after_signup(user)
         return user
 
     @staticmethod
-    def after_join(user: User) -> None:
+    def after_signup(user: User) -> None:
         user.send_welcome_email()
 
     # https://github.com/askcompany-kr/django-with-react-rev2/ 참조
-    def send_welcome_email(self):
+    def send_welcome_email(self) -> None:
         if not self.email:
             return
         subject = render_to_string("accounts/welcome_email_subject.txt", {
@@ -88,5 +93,7 @@ class User(AbstractUser):
         })
 
         sender_email = settings.WELCOME_EMAIL_SENDER
-
+        print(self.email)
         send_mail(subject, content, sender_email, [self.email], fail_silently=False)
+
+

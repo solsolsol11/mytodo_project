@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, SetPasswordForm
 from django import forms
 
@@ -59,9 +58,3 @@ class CustomUserChangeForm(UserChangeForm):
             if qs.exists():
                 raise forms.ValidationError("이미 등록된 이메일 주소입니다.")
         return email
-
-
-
-
-
-

@@ -209,11 +209,5 @@ class UserPasswordResetView(PasswordResetView):
 
 
 
-def send_email(request):
-    subject = "message"
-    to = ["ushio941@gmail.com"]
-    from_email = "ushio941@gmail.com"
-    message = "메시지 테스트"
-    EmailMessage(subject=subject, body=message, to=to, from_email=from_email).send()
 
 
