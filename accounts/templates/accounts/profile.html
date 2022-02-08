@@ -25,7 +25,7 @@
                 {% else %}
                 이름 : <h2>{{ user.name }}</h2>
                 <img src="{% url 'pydenticon_image' user.username %}"
-                     style="width:24px; display:inline-block;border-radius:50%; "/>
+                     style="width:100px; height:100px; object-fit:cover; border-radius:50%; display:inline-block;"/>
                 {% endif %}
                 <div class="t-flex-col">
                     <div class="t-flex">
