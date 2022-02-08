@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, SetPasswordForm, PasswordResetForm
 from django import forms
 
 from .models import User
@@ -58,3 +58,6 @@ class CustomUserChangeForm(UserChangeForm):
             if qs.exists():
                 raise forms.ValidationError("이미 등록된 이메일 주소입니다.")
         return email
+
+class MyPasswordResetForm(PasswordResetForm):
+    pass
