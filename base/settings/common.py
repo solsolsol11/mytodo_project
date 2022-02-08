@@ -40,8 +40,8 @@ INSTALLED_APPS = [
 
     'django_bootstrap5',
     'django_pydenticon',
-    'crispy_forms',
-    "crispy_bootstrap5",
+
+
     # Local App
     'accounts.apps.AccountsConfig',
     'board.apps.BoardConfig',
