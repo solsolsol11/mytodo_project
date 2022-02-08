@@ -10,24 +10,27 @@
         <div class="card-header t-flex">
             <h3 class="t-w-[90%]">회원정보</h3>
             <a href="{% url 'accounts:update' %}" class="t-whitespace-nowrap btn btn-secondary">
-                            <i class="fas fa-user-cog"></i>정보수정
-                        </a>
+                <i class="fas fa-user-cog"></i>정보수정
+            </a>
 
         </div>
         <div class="card-body">
             <div class="t-flex-auto t-flex">
                 {% if user.profile_img %}
-                <div class="t-w-[20%]">
+                <div class="t-flex t-w-[20%] t-content-center">
                     <img src="{{ user.profile_img.url }}"
-                         style="width:100px; height:100px; object-fit:cover; border-radius:50%; display:inline-block;"/>
+                         style="width:100px; height:100px; object-fit:cover; border-radius:50%; display:inline-block;">
                 </div>
 
                 {% else %}
-
-                <img src="{% url 'pydenticon_image' user.username %}"
-                     style="width:100px; height:100px; object-fit:cover; border-radius:50%; display:inline-block;"/>
+                <div class="">
+                    <div class="t-flex t-w-[100%] t-content-center">
+                        <img src="{% url 'pydenticon_image' user.username %}"
+                             style="width:100px; height:100px; object-fit:cover; border-radius:50%; display:inline-block;">
+                    </div>
+                </div>
                 {% endif %}
-                <div class="t-flex-col">
+                <div class="t-flex-col t-pl-12">
                     <div class="t-flex">
                         <h2>성명 :&nbsp;</h2>
                         <h4>{{ user.name }}</h4>
