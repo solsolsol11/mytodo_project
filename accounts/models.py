@@ -63,10 +63,12 @@ class User(AbstractUser):
         login(request, user)
 
     @classmethod
-    def join(cls, username, email, password, name, provider_type_code, provider_accounts_id) -> User:
+    def signup(cls, username, email, password, name, provider_type_code, provider_accounts_id) -> User:
+
         user = User.objects.create_user(username=username, email=email, password=password, namzxe=name,
                                         provider_type_code=provider_type_code,
                                         provider_accounts_id=provider_accounts_id)
+
         cls.after_signup(user)
 
         return user
@@ -74,6 +76,7 @@ class User(AbstractUser):
     @classmethod
     def signup_by_form(cls, form: SignupForm) -> User:
         user = form.save()
+
         cls.after_signup(user)
         return user
 
@@ -81,12 +84,13 @@ class User(AbstractUser):
     def after_signup(user: User) -> None:
         user.send_welcome_email()
 
+
     # https://github.com/askcompany-kr/django-with-react-rev2/ 참조
     def send_welcome_email(self) -> None:
-        import pdb
-        pdb.set_trace()
+
         if not self.email:
             return
+
         subject = render_to_string("accounts/welcome_email_subject.txt", {
             "user": self,
         })
@@ -95,7 +99,7 @@ class User(AbstractUser):
         })
 
         sender_email = settings.WELCOME_EMAIL_SENDER
-        print(self.email)
+
         send_mail(subject, content, sender_email, [self.email], fail_silently=False)
 
 

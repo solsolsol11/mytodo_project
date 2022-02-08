@@ -7,14 +7,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.views import logout_then_login, LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.mail import EmailMessage
+
 
 from django.db.models import QuerySet
-from django.forms import ModelForm
-from django.http import HttpRequest, HttpResponse
+
+from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.utils.decorators import method_decorator
+
 from lazy_string import LazyString
 
 from .decorators import logout_required
@@ -51,15 +51,12 @@ def signout(request: HttpRequest):
 
 @logout_required
 def signup(request: HttpRequest):
-
-
     if request.method == 'POST':
         form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
-            signed_user = form.save()
+            signed_user = User.signup_by_form(form)
             auth_login(request, signed_user)
             messages.success(request, "회원가입 환영합니다.")
-
             next_url = request.GET.get('next', '/')
             return redirect(next_url)
     else:
@@ -207,9 +204,3 @@ class UserPasswordResetView(PasswordResetView):
             return super().form_valid(form)
         else:
             return render(self.request, 'accounts/password_reset_done_fail.html')
-
-
-
-
-
-
