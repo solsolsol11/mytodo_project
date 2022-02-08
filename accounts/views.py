@@ -14,6 +14,7 @@ from django.db.models import QuerySet
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.views.decorators.http import require_POST
 
 from lazy_string import LazyString
 
@@ -204,3 +205,11 @@ class UserPasswordResetView(PasswordResetView):
             return super().form_valid(form)
         else:
             return render(self.request, 'accounts/password_reset_done_fail.html')
+
+
+@require_POST
+def delete(request):
+    if request.user.is_authenticated:
+    	request.user.delete()
+        auth_logout(request) # session 지우기. 단 탈퇴후 로그아웃순으로 처리. 먼저 로그아웃하면 해당 request 객체 정보가 없어져서 삭제가 안됨.
+    return redirect('articles:index')
