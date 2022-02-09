@@ -5,8 +5,8 @@
 {% block content %}
 
 
-<section class="section-signup t-flex t-items-center t-justify-center t-pt-[24px]">
-    <div class="card t-w-full t-max-w-screen-md mx-4">
+<section class="section-signup t-flex t-flex-1 t-items-center t-justify-center t-pt-[24px]">
+    <div class="card t-w-full t-max-w-screen-md mx-4 t-mb-3">
         <div class="card-header">회원탈퇴</div>
         <div class="card-body">
             <form method="POST" novalidate>
@@ -41,10 +41,12 @@
                 <br><br>
                 <button type="submit" name="bt" disabled="true" class="btn btn-danger">탈퇴하기</button>
             </form>
+            <br>
         </div>
     </div>
 </section>
 
+<!--체크박스 선택 시에만 회원탈퇴 버튼이 활성화 되도록-->
 <script type="text/javascript">
     function checkDisable(form) {
         if (form.ck.checked == true) {
