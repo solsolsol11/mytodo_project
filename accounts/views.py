@@ -2,25 +2,25 @@ import os
 
 import requests
 from django.contrib import messages
-from django.contrib.auth import login as auth_login, update_session_auth_hash
+from django.contrib.auth import login as auth_login, update_session_auth_hash, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
+
 from django.contrib.auth.views import logout_then_login, LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
-
 
 from django.db.models import QuerySet
 
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.decorators.http import require_POST
+
 
 from lazy_string import LazyString
 
 from .decorators import logout_required
 # Create your views here.
-from .forms import SignupForm, FindUsernameForm, CustomUserChangeForm
+from .forms import SignupForm, FindUsernameForm, CustomUserChangeForm, CheckPasswordForm
 from .models import User
 
 
@@ -207,9 +207,19 @@ class UserPasswordResetView(PasswordResetView):
             return render(self.request, 'accounts/password_reset_done_fail.html')
 
 
-@require_POST
+@login_required
 def delete(request):
-    if request.user.is_authenticated:
-    	request.user.delete()
-        auth_logout(request) # session 지우기. 단 탈퇴후 로그아웃순으로 처리. 먼저 로그아웃하면 해당 request 객체 정보가 없어져서 삭제가 안됨.
-    return redirect('articles:index')
+    if request.method == 'POST':
+        password_form = CheckPasswordForm(request.user, request.POST)
+
+        if password_form.is_valid():
+            request.user.delete()
+            logout(request)
+            messages.success(request, "회원탈퇴가 완료되었습니다.")
+            return redirect('main')
+    else:
+        password_form = CheckPasswordForm(request.user)
+
+    return render(request, 'accounts/user_del.html', {
+        'password_form':password_form
+    })
