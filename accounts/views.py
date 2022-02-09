@@ -44,7 +44,7 @@ class MyLoginView(SuccessMessageMixin, LoginView):
 def signin(request: HttpRequest):
     return MyLoginView.as_view()(request)
 
-
+@logout_required
 def signout(request: HttpRequest):
     messages.success(request, "로그아웃 되었습니다.")
     return logout_then_login(request)
@@ -223,6 +223,3 @@ def delete(request):
     return render(request, 'accounts/user_del.html', {
         'password_form':password_form
     })
-
-def complete(request):
-    return render(request, "accounts/password_reset_complete.html")

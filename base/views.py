@@ -13,10 +13,3 @@ def index(request):
 
     return render(request, "home/main.html")
 
-
-
-def index3(request):
-    return render(request, "home/main3.html")
-
-def index4(request):
-    return render(request, "home/main4.html")
