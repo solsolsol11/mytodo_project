@@ -551,12 +551,28 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.75rem;
 }
 
+.t-ml-2 {
+  margin-left: 0.5rem;
+}
+
+.t-mr-2 {
+  margin-right: 0.5rem;
+}
+
+.t-mb-4 {
+  margin-bottom: 1rem;
+}
+
 .t-flex {
   display: flex;
 }
 
 .t-grid {
   display: grid;
+}
+
+.t-hidden {
+  display: none;
 }
 
 .t-h-\[56px\] {
@@ -659,6 +675,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 4px;
 }
 
+.t-border {
+  border-width: 1px;
+}
+
+.t-border-2 {
+  border-width: 2px;
+}
+
 .t-border-l-0 {
   border-left-width: 0px;
 }
@@ -674,6 +698,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-border-gray-500 {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
+.t-border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .t-bg-purple-200 {

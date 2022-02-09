@@ -23,10 +23,13 @@ urlpatterns = [
     ), name='reset_password'),
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(
-        success_url=reverse_lazy('accounts:password_reset_complete')
+        success_url=reverse_lazy('accounts:password_reset_complete'),
+        template_name='accounts/password_reset_confirm.html',
+
     ), name='password_reset_confirm'),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(
         template_name = 'accounts/password_reset_sent.html'
     ), name='password_reset_complete'),
+    path('reset_password_complete2/', views.complete, name='password_reset_complete2'),
     path('user_del/', views.delete, name='delete'),
 ]

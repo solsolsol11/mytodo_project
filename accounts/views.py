@@ -223,3 +223,6 @@ def delete(request):
     return render(request, 'accounts/user_del.html', {
         'password_form':password_form
     })
+
+def complete(request):
+    return render(request, "accounts/password_reset_complete.html")

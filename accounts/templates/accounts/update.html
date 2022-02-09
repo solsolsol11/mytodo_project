@@ -12,22 +12,26 @@
         <div class="car-body t-bg-gray-100">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="id_box">
+                <div class="id_box t-mb-2 t-ml-2">
                     <span>아이디 : {{ request.user.username }}</span>
                 </div>
-                <br><a class="btn btn-success" href="{% url 'accounts:change_password' %}">비밀번호 변경</a>
-                <a href="{% url 'accounts:delete' %}" class="btn btn-danger">회원탈퇴</a>
+                <div class="t-ml-2">
+                    <br><a class="btn btn-success" href="{% url 'accounts:change_password' %}">비밀번호 변경</a>
+                    <a href="{% url 'accounts:delete' %}" class="btn btn-danger">회원탈퇴</a>
+                </div>
                 <br>
                 <br>
                 {% if error_message %}
                 {{ error_message }}
                 {% endif %}
 
+                <div class="t-mb-2 t-ml-2 t-mr-2">
+                    {% bootstrap_form form %}
+                    <br>
 
-                {% bootstrap_form form %}
-                <br>
-                {% bootstrap_button button_type="submit" content="변경" %}
-                {% bootstrap_button button_type="link" href=main_url content="취소" button_class="btn-outline-primary" %}
+                    {% bootstrap_button button_type="submit" content="변경" %}
+                    {% bootstrap_button button_type="link" href=main_url content="취소" button_class="btn-outline-primary" %}
+                </div>
 
             </form>
         </div>
