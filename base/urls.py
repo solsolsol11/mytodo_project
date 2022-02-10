@@ -24,7 +24,6 @@ from base import views
 urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
-    path('board/', include('board.urls')),
     path('', views.index, name="main"),
     path('su_list/', include('su_list.urls')),
     path('identicon/image/<path:data>/', pydenticon_image, name='pydenticon_image'),

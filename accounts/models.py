@@ -65,7 +65,7 @@ class User(AbstractUser):
     @classmethod
     def signup(cls, username, email, password, name, provider_type_code, provider_accounts_id) -> User:
 
-        user = User.objects.create_user(username=username, email=email, password=password, namzxe=name,
+        user = User.objects.create_user(username=username, email=email, password=password, name=name,
                                         provider_type_code=provider_type_code,
                                         provider_accounts_id=provider_accounts_id)
 

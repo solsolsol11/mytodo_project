@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
     # Local App
     'accounts.apps.AccountsConfig',
-    'board.apps.BoardConfig',
     'su_list.apps.SuListConfig',
 ]
 

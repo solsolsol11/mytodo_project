@@ -5,15 +5,17 @@
 {% block content %}
 <section class="section-signin t-flex-1 t-flex t-items-center t-justify-center">
     <div class="card t-w-full t-max-w-screen-md mx-4">
-        <div class="card-header">로그인</div>
+        <div class="card-header"><i class="fas fa-sign-in-alt"></i> 로그인</div>
         <div class="card-body">
             <form method="POST" action="">
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                {% bootstrap_button button_type="submit" content="로그인" %}
+                <button type="submit" class="btn btn-primary" ><i class="fas fa-sign-in-alt"></i> 로그인</button>
+                <a href="{% url 'accounts:kakao_signin' %}" class="btn btn-warning"><i class="fas fa-solid fa-comment"></i>카카오로 로그인</a>
+
 
             </form>
-            <a href="{% url 'accounts:kakao_signin' %}">카카오로 로그인</a>
+
         </div>
     </div>
 </section>
