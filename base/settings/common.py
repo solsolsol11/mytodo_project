@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'django_bootstrap5',
     'django_pydenticon',
+    'django_extensions',
 
 
     # Local App
@@ -87,9 +88,9 @@ WSGI_APPLICATION = 'base.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mytodoProject',
-        'USER': 'sbsst',
-        'PASSWORD': 'sbs123414',
+        'NAME': 'mytodoProject2',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
@@ -173,3 +174,7 @@ EMAIL_USE_TLS = True
 WELCOME_EMAIL_SENDER = EMAIL_HOST_USER
 
 
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
